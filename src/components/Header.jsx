@@ -17,11 +17,12 @@ const HeaderContent = styled("div")`
 
 const HeaderLinks = styled("div")`
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(4, auto);
     grid-gap: 2em;
     justify-content: flex-end;
     width: 100%;
     max-width: 200px;
+    text-transform: uppercase;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         grid-gap: 5.5em;
@@ -35,7 +36,8 @@ const HeaderLinks = styled("div")`
     a {
         color: ${colors.grey1};
         text-decoration: none;
-        font-size: 16px;
+        font-size: 14px;
+        font-weight: 600;
         height: 100%;
         padding-bottom: 1.25em;
         padding-top: 0.50em;
@@ -70,6 +72,11 @@ const Header = () => (
                     activeClassName="Link--is-active"
                     to="/blog">
                     About
+                </Link>
+                <Link
+                    activeClassName="Link--is-active"
+                    to="/blog">
+                    Ideas
                 </Link>
                 <Link
                     activeClassName="Link--is-active"
