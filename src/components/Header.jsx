@@ -6,7 +6,7 @@ import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
 
 const HeaderContainer = styled("div")`
-    padding-top: 3.75em;
+    padding-top: 21.4px;
     padding-bottom: 3em;
 `
 
@@ -17,8 +17,8 @@ const HeaderContent = styled("div")`
 
 const HeaderLinks = styled("div")`
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 7em;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 2em;
     justify-content: flex-end;
     width: 100%;
     max-width: 200px;
@@ -29,45 +29,26 @@ const HeaderLinks = styled("div")`
 
     @media(max-width: ${dimensions.maxwidthMobile}px) {
         grid-gap: 2.5em;
+        padding-top: 0.65em;
     }
 
     a {
-        color: currentColor;
+        color: ${colors.menuGrey};
         text-decoration: none;
-        border-bottom: 3px solid transparent;
-        font-weight: 600;
-        font-size: 0.95em;
+        font-size: 16px;
+        font-family: Metropolis Extra Light;
         height: 100%;
         padding-bottom: 1.25em;
-        padding-top: 0.25em;
+        padding-top: 0.50em;
         display: block;
         position: relative;
 
-        &:after {
-            position: absolute;
-            content: "";
-            bottom: 0;
-            width: 18px;
-            height: 3px;
-            background: transparent;
-            bottom: -3px;
-            right: 50%;
-            margin-right: -9px;
-            transition: 100ms ease-in-out background;
-        }
-
         &:hover {
-            &:after {
-                background: ${colors.blue500};
-                transition: 100ms ease-in-out background;
-            }
+            color: ${colors.black};
         }
 
         &.Link--is-active {
-            &:after {
-                background: ${colors.blue500};
-                transition: 100ms ease-in-out background;
-            }
+            color: ${colors.black};
         }
     }
 `
@@ -75,19 +56,24 @@ const HeaderLinks = styled("div")`
 const Header = () => (
     <HeaderContainer>
         <HeaderContent>
-            <Link to="/">
-                <Logo/>
+            <Link to="/" style={{ paddingBottom: "20px" }}>
+                <Logo />
             </Link>
             <HeaderLinks>
                 <Link
                     activeClassName="Link--is-active"
-                    to="/work">
-                    Work
+                    to="/projects">
+                    Projects
                 </Link>
                 <Link
                     activeClassName="Link--is-active"
                     to="/blog">
-                    Blog
+                    About
+                </Link>
+                <Link
+                    activeClassName="Link--is-active"
+                    to="/blog">
+                    Contact
                 </Link>
             </HeaderLinks>
         </HeaderContent>
