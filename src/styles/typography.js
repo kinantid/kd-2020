@@ -1,11 +1,12 @@
 import css from '@emotion/css';
+import './fonts.scss';
 import dimensions from "styles/dimensions";
 
 const typeStyles = css`
     h1 {
-        font-size: 2.8em;
+        font-size: 40px;
         line-height: 1.45;
-        font-weight: 800;
+        font-family: Metropolis Regular;
 
         @media(max-width:${dimensions.maxwidthTablet}px) {
             font-size: 2.25em;
@@ -18,20 +19,23 @@ const typeStyles = css`
 
     h2 {
         margin-bottom: 2rem;
-        font-size: 1.9em;
+        font-size: 32px;
         line-height: 1.1;
+        font-family: Metropolis Regular;
+
     }
 
     h3 {
+        font-family: Metropolis Regular;
         line-height: 1.2;
-        font-size: 1.5em;
+        font-size: 24px;
     }
 
-    h5 {
+    h4 {
+        font-family: Metropolis Regular;
         margin-bottom: 1.45rem;
         font-weight: 500;
-        line-height: 20px;
-        font-size: 0.95em;
+        font-size: 16px;
     }
 
     h6 {
@@ -41,6 +45,7 @@ const typeStyles = css`
     }
 
     p {
+        font-family: HKGrotesk Light;
         line-height: 1.9;
     }
 

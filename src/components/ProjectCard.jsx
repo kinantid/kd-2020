@@ -8,8 +8,7 @@ import PropTypes from "prop-types";
 
 const ProjectCardContainer = styled(Link)`
     display: grid;
-    grid-template-columns: 4fr 7fr;
-    box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
+    grid-template-columns: 1fr 1fr;
     margin-bottom: 4em;
     transition: all 150ms ease-in-out;
     text-decoration: none;
@@ -28,9 +27,6 @@ const ProjectCardContainer = styled(Link)`
     }
 
     &:hover {
-        box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
-        transition: all 150ms ease-in-out;
-
         .ProjectCardAction {
             color: ${colors.blue500};
             transition: all 150ms ease-in-out;
@@ -82,13 +78,13 @@ const ProjectCardContent = styled("div")`
 `
 
 const ProjectCardCategory = styled("h6")`
-    font-weight: 600;
     color: ${colors.grey600};
 `
 
 const ProjectCardTitle = styled("h3")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
+    font-family: Metropolis Regular;
 `
 
 const ProjectCardBlurb = styled("div")`
@@ -103,6 +99,7 @@ const ProjectCardBlurb = styled("div")`
 
 const ProjectCardAction = styled("div")`
     font-weight: 600;
+    padding-top: 14px;
     text-decoration: none;
     color: currentColor;
     transition: all 150ms ease-in-out;
@@ -116,14 +113,12 @@ const ProjectCardAction = styled("div")`
 `
 
 const ProjectCardImageContainer = styled("div")`
-    background: ${colors.grey200};
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     overflow: hidden;
     position: relative;
-    padding-left: 2em;
-    padding-right: 2em;
+    border-radius: 12px;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         padding-top: 3em;
@@ -148,6 +143,7 @@ const ProjectCardImageContainer = styled("div")`
 
     img {
         max-width: 400px;
+        height: 203px;
         width: 100%;
         box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
 
@@ -157,25 +153,27 @@ const ProjectCardImageContainer = styled("div")`
     }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid}) => (
+const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
     <ProjectCardContainer to={`/work/${uid}`}>
+        <ProjectCardImageContainer className="ProjectCardImageContainer">
+            <img src={thumbnail.url} alt={title[0].text} />
+        </ProjectCardImageContainer>
         <ProjectCardContent className="ProjectCardContent">
+            <div style={{display: "flex"}}>
+                <ProjectCardTitle>
+                    {title[0].text}
+                </ProjectCardTitle>
+                <ProjectCardAction className="ProjectCardAction">
+                    <span>&#10140;</span>
+                </ProjectCardAction>
+            </div>
             <ProjectCardCategory>
                 {category[0].text}
             </ProjectCardCategory>
-            <ProjectCardTitle>
-                {title[0].text}
-            </ProjectCardTitle>
             <ProjectCardBlurb>
                 {RichText.render(description)}
             </ProjectCardBlurb>
-            <ProjectCardAction className="ProjectCardAction">
-                Details <span>&#8594;</span>
-            </ProjectCardAction>
         </ProjectCardContent>
-        <ProjectCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} alt={title[0].text}/>
-        </ProjectCardImageContainer>
     </ProjectCardContainer>
 )
 
