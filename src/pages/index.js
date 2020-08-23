@@ -14,7 +14,6 @@ const Hero = styled("div")`
     padding-top: 2.5em;
     padding-bottom: 3em;
     max-width: 423px;
-    font-family: Metropolis Regular;
     color: ${colors.charcoalBlack};
     @media(max-width:${dimensions.maxwidthMobile}px) {
        margin-bottom: 3em;

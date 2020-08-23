@@ -7,7 +7,7 @@ const typeStyles = css`
         font-size: 40px;
         line-height: 1.45;
         color: white;
-        font-family: Metropolis Regular;
+        font-family: Inter;
 
         @media(max-width:${dimensions.maxwidthTablet}px) {
             font-size: 2.25em;
@@ -22,21 +22,24 @@ const typeStyles = css`
         margin-bottom: 2rem;
         font-size: 32px;
         line-height: 1.1;
-        font-family: Metropolis Regular;
+        font-family: Inter;
+        color: white;
 
     }
 
     h3 {
-        font-family: Metropolis Regular;
+        font-family: Inter;
         line-height: 1.2;
         font-size: 24px;
+        color: white;
     }
 
     h4 {
-        font-family: Metropolis Regular;
+        font-family: Inter;
         margin-bottom: 1.45rem;
         font-weight: 500;
         font-size: 16px;
+                color: white;
     }
 
     h6 {
@@ -46,7 +49,7 @@ const typeStyles = css`
     }
 
     p {
-        font-family: HKGrotesk Light;
+        font-family: Inter;
         line-height: 1.9;
     }
 
