@@ -6,6 +6,7 @@ const typeStyles = css`
     h1 {
         font-size: 40px;
         line-height: 1.45;
+        color: white;
         font-family: Metropolis Regular;
 
         @media(max-width:${dimensions.maxwidthTablet}px) {
