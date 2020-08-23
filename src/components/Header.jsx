@@ -33,10 +33,9 @@ const HeaderLinks = styled("div")`
     }
 
     a {
-        color: ${colors.menuGrey};
+        color: ${colors.grey1};
         text-decoration: none;
         font-size: 16px;
-        font-family: Metropolis Extra Light;
         height: 100%;
         padding-bottom: 1.25em;
         padding-top: 0.50em;
@@ -44,11 +43,13 @@ const HeaderLinks = styled("div")`
         position: relative;
 
         &:hover {
-            color: ${colors.black};
+            color: ${colors.onHoverOrange};
         }
 
         &.Link--is-active {
-            color: ${colors.black};
+            color: ${colors.orange};
+            text-decoration: underline;
+
         }
     }
 `

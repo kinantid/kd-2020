@@ -84,7 +84,6 @@ const ProjectCardCategory = styled("h6")`
 const ProjectCardTitle = styled("h3")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    font-family: Metropolis Regular;
 `
 
 const ProjectCardBlurb = styled("div")`

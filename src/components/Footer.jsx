@@ -44,9 +44,6 @@ const SocialLinksContainer = styled("div")`
 `
 
 const SocialImage = styled("img")`
-    &:hover {
-        opacity: 0.6;
-    }
 `
 
 const Footer = () => (
