@@ -1,11 +1,11 @@
-@import url('https://rsms.me/inter/inter.css');
+@import '../../static/fonts/fonts.css';
 
 html {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Metropolis Regular';
 }
 
 @supports (font-variation-settings: normal) {
     html {
-        font-family: 'Inter var', sans-serif;
+        font-family: 'Metropolis Regular';
     }
 }
