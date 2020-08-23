@@ -1,63 +1,90 @@
 import React from "react";
-import { Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
-import Logo from "components/_ui/Logo";
-import spooch from "images/oscar-icon.png"
+import email from "../images/Email Logo.svg";
+import linkedin from "../images/Linkedin Logo.svg";
+import medium from "../images/Medium Logo.svg";
+import twitter from "../images/Twitter Logo.svg";
+import dimensions from "styles/dimensions";
 
 const FooterContainer = styled("div")`
     padding-top: 3.75em;
-    padding-bottom: 3em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    svg {
-        max-width: 50px;
-    }
-`
-
-const FooterAuthor = styled("a")`
-    font-size: 0.75em;
-    color: ${colors.grey700};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
+    padding-bottom: 40px;
     margin-top: 1.5em;
+    font-size: 12px;
+    font-family: HK Grotesk Medium;
+    display: flex;
+    justify-content: space-between;
 
-     &:hover {
-         color: ${colors.blue900};
-
-        .FooterSpooch {
-            animation-name: rotate;
-            animation-duration: 1.5s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-    }
-
-    @keyframes rotate {
-        from {transform: rotate(0deg);}
-        to {transform: rotate(360deg);}
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+        flex-direction: column-reverse;
+        align-items: center;
     }
 `
+const FooterAuthor = styled("p")`
+    line-height: 1.5;
+    margin: 0;
+    color: ${colors.menuGrey};
+`
+const FooterDeveloper = styled("a")`
+    color: ${colors.primaryBlue};
+    padding-left: 3px;
+`
 
-const FooterSpooch = styled("img")`
-    max-width: 33px;
-    margin-top: 0.25em;
+const TextContainer = styled("div")`
+    display: flex;
+    margin-top: 1.5em;
+`
+
+const SocialLinksContainer = styled("div")`
+    display: flex;
+    justify-content: space-between;
+    width: 216px;
+    margin-top: 1.5em;
+`
+
+const SocialImage = styled("img")`
+    &:hover {
+        opacity: 0.6;
+    }
 `
 
 const Footer = () => (
     <FooterContainer>
-        <Link to="/">
-            <Logo />
-        </Link>
-        <FooterAuthor href="https://www.marguerite.io/?utm_source=prist&utm_medium=footer&utm_campaign=prist_starter">
-            © 2019 — Designed & developed by Marguerite Roth
-            <FooterSpooch className="FooterSpooch" src={spooch} />
+        <TextContainer>
+            <FooterAuthor>
+                Designed myself and built by
         </FooterAuthor>
-    </FooterContainer>
+            {" "}
+            <FooterDeveloper to='https://www.linkedin.com/in/sophia-ritchie/'>
+                Sophia Ritchie
+        </FooterDeveloper>
+            {" "}
+            <FooterAuthor>
+                <span role="img" aria-label="black heart emoji and seedling emoji">
+                    🖤🌱
+            </span>
+            </FooterAuthor>
+        </TextContainer>
+        <SocialLinksContainer>
+            <a href="mailto:kinanti.desy@gmail.com">
+                <SocialImage width="24px" height="24px" alt="Email logo" src={email}>
+                </SocialImage>
+            </a>
+            <a href="https://www.linkedin.com/in/kinantid/">
+                <SocialImage width="24px" height="24px" alt="Linkedin logo" src={linkedin}>
+                </SocialImage>
+            </a>
+            <a href="https://twitter.com/desyanandini">
+                <SocialImage width="24px" height="24px" alt="Twitter logo" src={twitter}>
+                </SocialImage>
+            </a>
+            <a href="medium.com/@kinantid">
+                <SocialImage width="24px" height="24px" alt="Medium logo" src={medium}>
+                </SocialImage>
+            </a>
+        </SocialLinksContainer>
+    </FooterContainer >
 )
 
 export default Footer;
