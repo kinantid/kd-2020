@@ -3,6 +3,8 @@ const colors = {
     orange: '#FF611D',
     onHoverOrange: '#C33716',
     grey1: '#EDEDED',
+    grey2: '#C5C5C5',
+
     charcoalBlack: '#5D5D5D',
     black: '#1A1A1A',
     primaryBlue: '#67809F',

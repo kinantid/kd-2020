@@ -13,8 +13,6 @@ import ProjectCard from "components/ProjectCard";
 const Hero = styled("div")`
     padding-top: 2.5em;
     padding-bottom: 3em;
-    max-width: 423px;
-    color: ${colors.charcoalBlack};
     @media(max-width:${dimensions.maxwidthMobile}px) {
        margin-bottom: 3em;
     }
@@ -27,27 +25,64 @@ const Hero = styled("div")`
         a {
             text-decoration: underline;
 
-            color: ${colors.primaryBlue};
+            color: ${colors.orange};
 
             &:hover {
-                color: ${colors.secondaryBlue};
+                color: ${colors.onHoverOrange};
             }
         }
     }
 
     h2 {
         font-size: 24px;
-        font-family: HKGrotesk Light;
+        font-weight: 400;
+        line-height: 32px;
+        color: ${colors.grey2}
+    }
+`
 
+const AboutSection = styled("div")`
+    padding-top: 2.5em;
+    padding-bottom: 3em;
+    @media(max-width:${dimensions.maxwidthMobile}px) {
+       margin-bottom: 3em;
+    }
 
-        a {
-            text-decoration: underline;
+    h1 {
+        margin: 0;
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 600;
+    }
 
-            color: ${colors.primaryBlue};
+    p {
+        font-size: 20px;
+        line-height: 28px;
+        max-width: 654px;
+        color: ${colors.grey1};
+        margin-bottom: 2em;
+    }
+    ul {
+        padding-inline-start: 0;
+    }
+    li {
+        font-size: 20px;
+        line-height: 28px;
+        max-width: 654px;
+        color: ${colors.grey2};
+        list-style-type:none;
+    }
 
-            &:hover {
-                color: ${colors.secondaryBlue};
-            }
+    a {
+        text-decoration: underline;
+
+        color: ${colors.orange};
+
+        &:hover {
+            color: ${colors.onHoverOrange};
         }
     }
 `
@@ -126,6 +161,20 @@ const RenderBody = ({ home, projects, meta }) => (
                 />
             ))}
         </Section>
+        <AboutSection>
+            <>
+                {RichText.render(home.about_header)}
+            </>
+            <>
+                {RichText.render(home.about_main_text)}
+            </>
+            <>
+                {RichText.render(home.about_links_header)}
+            </>
+            <>
+                {RichText.render(home.about_links_section)}
+            </>
+        </AboutSection>
     </>
 );
 
@@ -159,6 +208,10 @@ export const query = graphql`
                         hero_title
                         hero_subtitle
                         content
+                        about_header
+                        about_main_text
+                        about_links_header
+                        about_links_section
                     }
                 }
             }

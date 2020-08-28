@@ -65,22 +65,22 @@ const Header = () => (
             <HeaderLinks>
                 <Link
                     activeClassName="Link--is-active"
-                    to="/projects">
+                    to="/">
                     Projects
                 </Link>
                 <Link
                     activeClassName="Link--is-active"
-                    to="/blog">
+                    to="/#About">
                     About
                 </Link>
                 <Link
                     activeClassName="Link--is-active"
-                    to="/blog">
+                    to="/#Ideas">
                     Ideas
                 </Link>
                 <Link
                     activeClassName="Link--is-active"
-                    to="/blog">
+                    to="/contact">
                     Contact
                 </Link>
             </HeaderLinks>
