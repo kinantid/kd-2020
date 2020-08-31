@@ -21,7 +21,6 @@ const Hero = styled("div")`
         margin-bottom: 1em;
         font-size: 40px;
 
-
         a {
             text-decoration: underline;
 
@@ -88,16 +87,12 @@ const AboutSection = styled("div")`
 `
 
 const Section = styled("div")`
-    margin-bottom: 10em;
+    margin-bottom: 1em;
     display: flex;
-    flex-direction: column;
+    
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 4em;
-    }
-
-    &:last-of-type {
-        margin-bottom: 0;
     }
 `
 

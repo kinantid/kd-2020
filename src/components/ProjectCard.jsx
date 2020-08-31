@@ -7,23 +7,15 @@ import colors from "styles/colors";
 import PropTypes from "prop-types";
 
 const ProjectCardContainer = styled(Link)`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 4em;
+    display: flex;
+    width: 100%;
     transition: all 150ms ease-in-out;
     text-decoration: none;
     color: currentColor;
 
-    @media(max-width:950px) {
-        grid-template-columns: 4.5fr 7fr;
-    }
-
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-        grid-template-columns: 1fr;
-    }
-
     @media(max-width:${dimensions.maxwidthMobile}px) {
         margin-bottom: 2em;
+        flex-direction: column;
     }
 
     &:hover {
@@ -51,10 +43,8 @@ const ProjectCardContainer = styled(Link)`
 `
 
 const ProjectCardContent = styled("div")`
-    background: white;
     padding: 4em 3em 2.25em 3em;
-    position: relative;
-
+    color: ${colors.grey1}
     &:before {
         position: absolute;
         content: "";
@@ -77,16 +67,12 @@ const ProjectCardContent = styled("div")`
     }
 `
 
-const ProjectCardCategory = styled("h6")`
-    color: ${colors.grey600};
-`
-
 const ProjectCardTitle = styled("h3")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
 `
 
-const ProjectCardBlurb = styled("div")`
+const ProjectCardBlurb = styled("p")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
     margin-bottom: 5em;
@@ -96,7 +82,7 @@ const ProjectCardBlurb = styled("div")`
     }
 `
 
-const ProjectCardAction = styled("div")`
+const ProjectCardAction = styled("p")`
     font-weight: 600;
     padding-top: 14px;
     text-decoration: none;
@@ -112,12 +98,10 @@ const ProjectCardAction = styled("div")`
 `
 
 const ProjectCardImageContainer = styled("div")`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     border-radius: 12px;
+    z-index:-5;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         padding-top: 3em;
@@ -134,7 +118,6 @@ const ProjectCardImageContainer = styled("div")`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
@@ -154,24 +137,22 @@ const ProjectCardImageContainer = styled("div")`
 
 const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
     <ProjectCardContainer to={`/work/${uid}`}>
-        <ProjectCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} alt={title[0].text} />
-        </ProjectCardImageContainer>
         <ProjectCardContent className="ProjectCardContent">
-            <div style={{display: "flex"}}>
+            <ProjectCardImageContainer className="ProjectCardImageContainer">
+                <img src={thumbnail.url} alt={title[0].text} />
+            </ProjectCardImageContainer>
+            <div style={{ display: "flex" }}>
                 <ProjectCardTitle>
                     {title[0].text}
                 </ProjectCardTitle>
-                <ProjectCardAction className="ProjectCardAction">
-                    <span>&#10140;</span>
-                </ProjectCardAction>
             </div>
-            <ProjectCardCategory>
-                {category[0].text}
-            </ProjectCardCategory>
             <ProjectCardBlurb>
                 {RichText.render(description)}
             </ProjectCardBlurb>
+            <ProjectCardAction className="ProjectCardAction">
+
+                VIEW CASE STUDY
+                <span>&#10140;</span> </ProjectCardAction>
         </ProjectCardContent>
     </ProjectCardContainer>
 )
