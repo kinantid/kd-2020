@@ -87,14 +87,27 @@ const AboutSection = styled("div")`
 `
 
 const Section = styled("div")`
-    margin-bottom: 5em;
-    display: flex;
-    
+    margin-bottom: 4em;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display:inline-block;
+    white-space:nowrap;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 4em;
-        flex-direction: column;
     }
+
+    ::-webkit-scrollbar {
+        height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px ${colors.grey4};
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${colors.orange}; 
+        height: 1px;
+    }
+      
 `
 
 const RenderBody = ({ home, projects, meta }) => (

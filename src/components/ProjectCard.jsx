@@ -9,86 +9,71 @@ import PropTypes from "prop-types";
 const ProjectCardContainer = styled(Link)`
     transition: all 150ms ease-in-out;
     text-decoration: none;
-    width: 100%;
-    height: 100%;
     border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    margin-right: 24px;
+    overflow: hidden;
+    transition: visibility 0s, opacity 0.5s linear;
 
     &:hover {
-        .ProjectCardAction {
-            color: ${colors.blue500};
-            transition: all 150ms ease-in-out;
 
-            span {
-                transform: translateX(0px);
-                opacity: 1;
-                transition: transform 150ms ease-in-out;
-            }
+        .ProjectCardAction {
+            visibility: visible;
+            opacity: 1;
         }
 
-        .ProjectCardContent::before {
-            opacity: 0.02;
-            transition: all 150ms ease-in-out;
+        .ProjectCardImageContainer {
+            transform: scale(1.15);
+            transition: all 0.25s ease-in-out;
         }
 
         .ProjectCardImageContainer::before {
-            opacity: 0.2;
-            transition: all 150ms ease-in-out;
+            background-color: #191919;
+            opacity: 0.8;
         }
     }
 `
 
 const ProjectCardContent = styled("div")`
-width: 100%;
-border-radius: 4px;
-
-height: 100%;
-    &:before {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        mix-blend-mode: multiply;
-        opacity: 0;
-        transition: all 150ms ease-in-out;
-    }
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: 32px;
+    width: 256px;
 `
 
 const ProjectCardTitle = styled("h3")`
-    margin-left: 20px;
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
 `
 
-const ProjectCardBlurb = styled("div")`
-    margin-bottom: 5em;
+const ProjectCardBlurb = styled("p")`
+    margin-bottom: 7em;
     margin-block-start: 0;
-    margin-left: 20px;
+    margin-right:auto;
     font-size: 16px;
     line-height: 24px;
-    width: 256px;
+    width:inherit;
+    white-space: pre-wrap;
     color: ${colors.grey1};
 `
 
 const ProjectCardAction = styled("p")`
     font-weight: 600;
-    margin-left: 20px;
     text-decoration: none;
     color: ${colors.grey1};
     transition: all 150ms ease-in-out;
+    visibility: hidden;
+    opacity: 0;
 
     span {
-        margin-left: 1em;
-        transform: translateX(-8px);
+        margin-left: 0.75em;
         display: inline-block;
         color: ${colors.orange};
-        transition: transform 400ms ease-in-out;
     }
 `
 
 const ProjectCardImageContainer = styled("div")`
-    overflow: hidden;
-    position: absolute;
     z-index:-5;
     background-color: #191919;
     opacity: 0.5;
@@ -98,34 +83,28 @@ const ProjectCardImageContainer = styled("div")`
         content: "";
         width: 100%;
         height: 100%;
-        left: 0;
-        top: 0;
-        mix-blend-mode: multiply;
-        opacity: 0;
-        transition: all 150ms ease-in-out;
     }
 
     img {
         border-radius: 4px;
-        max-width: 532px;
+        max-width: 557px;
+        min-height: 279px;
+        min-width: 256px;
         width: 100%;
-        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
     }
 `
 
 const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
     <ProjectCardContainer to={`/work/${uid}`}>
+        <ProjectCardImageContainer className="ProjectCardImageContainer">
+            <img src={thumbnail.url} alt={title[0].text} />
+        </ProjectCardImageContainer>
         <ProjectCardContent className="ProjectCardContent">
-            <ProjectCardImageContainer className="ProjectCardImageContainer">
-                <img src={thumbnail.url} alt={title[0].text} />
-            </ProjectCardImageContainer>
-            <div style={{ display: "flex" }}>
                 <ProjectCardTitle>
                     {title[0].text}
                 </ProjectCardTitle>
-            </div>
             <ProjectCardBlurb>
-                {RichText.render(description)}
+                {RichText.asText(description)}
             </ProjectCardBlurb>
             <ProjectCardAction className="ProjectCardAction">
 

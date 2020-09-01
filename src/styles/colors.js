@@ -5,6 +5,7 @@ const colors = {
     grey1: '#EDEDED',
     grey2: '#C5C5C5',
     grey3: '#898989',
+    grey4: '#575757',
     charcoalBlack: '#5D5D5D',
     black: '#1A1A1A',
     primaryBlue: '#67809F',
