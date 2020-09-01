@@ -1,4 +1,5 @@
 import React from "react";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
@@ -32,7 +33,6 @@ const HeaderLinks = styled("div")`
         grid-gap: 2.5em;
         padding-top: 0.65em;
     }
-
     a {
         color: ${colors.grey1};
         text-decoration: none;
@@ -52,7 +52,6 @@ const HeaderLinks = styled("div")`
         &.Link--is-active {
             color: ${colors.orange};
             text-decoration: underline;
-
         }
     }
 `
@@ -60,30 +59,30 @@ const HeaderLinks = styled("div")`
 const Header = () => (
     <HeaderContainer>
         <HeaderContent>
-            <Link to="/" style={{ paddingBottom: "20px" }}>
+            <AnchorLink to="/" style={{ paddingBottom: "20px" }}>
                 <Logo />
-            </Link>
+            </AnchorLink>
             <HeaderLinks>
                 <Link
                     activeClassName="Link--is-active"
                     to="/">
                     Projects
                 </Link>
-                <Link
+                <AnchorLink
                     activeClassName="Link--is-active"
-                    to="/#About">
+                    to="/#about">
                     About
-                </Link>
-                <Link
+                </AnchorLink>
+                <AnchorLink
                     activeClassName="Link--is-active"
-                    to="/#Ideas">
+                    to="/#ideas">
                     Ideas
-                </Link>
-                <Link
+                </AnchorLink>
+                <AnchorLink
                     activeClassName="Link--is-active"
                     to="/contact">
                     Contact
-                </Link>
+                </AnchorLink>
             </HeaderLinks>
         </HeaderContent>
     </HeaderContainer>

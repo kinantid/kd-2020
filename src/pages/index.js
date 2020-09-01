@@ -196,7 +196,7 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                 />
             ))}
         </Section>
-        <AboutSection>
+        <AboutSection id="about">
             <>
                 {RichText.render(home.about_header)}
             </>
@@ -214,7 +214,7 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                 {RichText.render(home.about_links_section)}
             </>
         </AboutSection>
-        <Hero>
+        <Hero id="ideas">
             <>
                 {RichText.render(home.ideas_header)}
             </>
