@@ -7,16 +7,11 @@ import colors from "styles/colors";
 import PropTypes from "prop-types";
 
 const ProjectCardContainer = styled(Link)`
-    display: flex;
-    width: 100%;
     transition: all 150ms ease-in-out;
     text-decoration: none;
-    color: currentColor;
-
-    @media(max-width:${dimensions.maxwidthMobile}px) {
-        margin-bottom: 2em;
-        flex-direction: column;
-    }
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
 
     &:hover {
         .ProjectCardAction {
@@ -43,8 +38,10 @@ const ProjectCardContainer = styled(Link)`
 `
 
 const ProjectCardContent = styled("div")`
-    padding: 4em 3em 2.25em 3em;
-    color: ${colors.grey1}
+width: 100%;
+border-radius: 4px;
+
+height: 100%;
     &:before {
         position: absolute;
         content: "";
@@ -52,47 +49,39 @@ const ProjectCardContent = styled("div")`
         height: 100%;
         left: 0;
         top: 0;
-        background: ${colors.blue500};
         mix-blend-mode: multiply;
         opacity: 0;
         transition: all 150ms ease-in-out;
     }
-
-    @media(max-width:950px) {
-        padding: 3.25em 2.5em 2em 2.5em;
-    }
-
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-        grid-row: 2;
-    }
 `
 
 const ProjectCardTitle = styled("h3")`
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
+    margin-left: 20px;
+    margin-bottom: 0;
 `
 
-const ProjectCardBlurb = styled("p")`
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
+const ProjectCardBlurb = styled("div")`
     margin-bottom: 5em;
-
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-        margin-bottom: 2.5em;
-    }
+    margin-block-start: 0;
+    margin-left: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    width: 256px;
+    color: ${colors.grey1};
 `
 
 const ProjectCardAction = styled("p")`
     font-weight: 600;
-    padding-top: 14px;
+    margin-left: 20px;
     text-decoration: none;
-    color: currentColor;
+    color: ${colors.grey1};
     transition: all 150ms ease-in-out;
 
     span {
         margin-left: 1em;
         transform: translateX(-8px);
         display: inline-block;
+        color: ${colors.orange};
         transition: transform 400ms ease-in-out;
     }
 `
@@ -100,17 +89,10 @@ const ProjectCardAction = styled("p")`
 const ProjectCardImageContainer = styled("div")`
     overflow: hidden;
     position: absolute;
-    border-radius: 12px;
     z-index:-5;
-
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-        padding-top: 3em;
-        max-height: 200px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
+    background-color: #191919;
+    opacity: 0.5;
+   
     &:before {
         position: absolute;
         content: "";
@@ -124,14 +106,10 @@ const ProjectCardImageContainer = styled("div")`
     }
 
     img {
-        max-width: 400px;
-        height: 203px;
+        border-radius: 4px;
+        max-width: 532px;
         width: 100%;
         box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
-
-        @media(max-width:${dimensions.maxwidthTablet}px) {
-            max-width: 300px;
-        }
     }
 `
 
@@ -152,7 +130,7 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
             <ProjectCardAction className="ProjectCardAction">
 
                 VIEW CASE STUDY
-                <span>&#10140;</span> </ProjectCardAction>
+                <span>{'>'}</span> </ProjectCardAction>
         </ProjectCardContent>
     </ProjectCardContainer>
 )

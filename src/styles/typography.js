@@ -52,7 +52,6 @@ const typeStyles = css`
         font-family: Inter;
         font-style:  normal;
         font-weight: 400;
-        line-height: 1.9;
     }
 
     a {

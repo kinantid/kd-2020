@@ -87,12 +87,13 @@ const AboutSection = styled("div")`
 `
 
 const Section = styled("div")`
-    margin-bottom: 1em;
+    margin-bottom: 5em;
     display: flex;
     
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 4em;
+        flex-direction: column;
     }
 `
 
