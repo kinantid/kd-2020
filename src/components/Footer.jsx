@@ -10,15 +10,14 @@ import { graphql, useStaticQuery } from "gatsby";
 import { RichText } from "prismic-reactjs";
 
 const FooterContainer = styled("div")`
-    padding-top: 3.75em;
-    padding-bottom: 40px;
-    margin-top: 1.5em;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 3em;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         flex-direction: column-reverse;
         align-items: center;
+        justify-content: center;
     }
 `
 
@@ -42,8 +41,8 @@ const TextContainer = styled("div")`
         margin: 0 0 0 0;
     }
 
-    @media(max-width: ${dimensions.maxWidthFooter}px) {
-        width: 616px;
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        text-align: center;
     }
     
 `
@@ -53,6 +52,11 @@ const SocialLinksContainer = styled("div")`
     justify-content: space-between;
     width: 216px;
     margin-top: 1.7em;
+
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        margin-bottom: 3em;
+    }
+
 `
 
 const SocialImage = styled("img")`

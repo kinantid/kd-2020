@@ -6,7 +6,7 @@ import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
 
-const ProjectCardContainer = styled(Link)`
+const ProjectCardContainer = styled('a')`
     transition: all 150ms ease-in-out;
     text-decoration: none;
     border-radius: 4px;
@@ -45,6 +45,8 @@ const ProjectCardContent = styled("div")`
 
 const ProjectCardTitle = styled("h3")`
     margin-bottom: 0.5em;
+    white-space: pre-wrap;
+
 `
 
 const ProjectCardBlurb = styled("p")`
@@ -94,22 +96,26 @@ const ProjectCardImageContainer = styled("div")`
     }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
-    <ProjectCardContainer to={`/work/${uid}`}>
+const ProjectCard = ({ title, description, thumbnail, uid }) => (
+    <ProjectCardContainer href={!uid.url ? `/work/${uid}` : `${uid.url}`}>
         <ProjectCardImageContainer className="ProjectCardImageContainer">
             <img src={thumbnail.url} alt={title[0].text} />
         </ProjectCardImageContainer>
         <ProjectCardContent className="ProjectCardContent">
-                <ProjectCardTitle>
-                    {title[0].text}
-                </ProjectCardTitle>
-            <ProjectCardBlurb>
-                {RichText.asText(description)}
-            </ProjectCardBlurb>
-            <ProjectCardAction className="ProjectCardAction">
+            <ProjectCardTitle>
+                {title[0].text}
+            </ProjectCardTitle>
+            {!description ? <></> :
+                <>
+                    <ProjectCardBlurb>
+                        {RichText.asText(description)}
+                    </ProjectCardBlurb>
+                    <ProjectCardAction className="ProjectCardAction">
 
-                VIEW CASE STUDY
-                <span>{'>'}</span> </ProjectCardAction>
+                        VIEW CASE STUDY
+                        <span>{'>'}</span> </ProjectCardAction>
+                </>
+            }
         </ProjectCardContent>
     </ProjectCardContainer>
 )
@@ -117,7 +123,6 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
 export default ProjectCard;
 
 ProjectCard.propTypes = {
-    category: PropTypes.array.isRequired,
     thumbnail: PropTypes.object.isRequired,
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,

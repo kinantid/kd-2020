@@ -2,6 +2,7 @@
 const dimensions = {
     //pixels
     maxwidthDesktop: 1400,
+    minWidthDesktop: 1024,
     maxwidthTablet: 768,
     maxwidthMobile: 600,
     maxwidthFooter: 1024,

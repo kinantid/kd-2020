@@ -22,7 +22,7 @@ const Hero = styled("div")`
         font-size: 40px;
 
         a {
-            text-decoration: underline;
+            text-decoration: none;
 
             color: ${colors.orange};
 
@@ -39,9 +39,35 @@ const Hero = styled("div")`
         color: ${colors.grey2}
     }
 `
+const AboutDiv = styled("div")`
+    padding-top: 3em;
+    display: flex;
+    justify-content: space-between;
+    img {
+        margin-left: 3em;
+    }
+
+    @media(max-width:${dimensions.maxwidthTablet}px) {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items:center;
+        img {
+            margin-bottom: 1em;
+        }
+     }
+
+     @media(max-width:${dimensions.maxwidthMobile}px) {
+        justify-content: start;
+        align-items:flex-start;
+        
+     img {
+        margin-left: 0;
+        }
+     }
+`
 
 const AboutSection = styled("div")`
-    padding-top: 2.5em;
+    padding-top: 3em;
     padding-bottom: 3em;
     @media(max-width:${dimensions.maxwidthMobile}px) {
        margin-bottom: 3em;
@@ -58,6 +84,7 @@ const AboutSection = styled("div")`
     }
 
     p {
+        margin-block-start: 0;
         font-size: 20px;
         line-height: 28px;
         max-width: 654px;
@@ -87,7 +114,6 @@ const AboutSection = styled("div")`
 `
 
 const Section = styled("div")`
-    margin-bottom: 4em;
     overflow-x: auto;
     overflow-y: hidden;
     display:inline-block;
@@ -110,7 +136,7 @@ const Section = styled("div")`
       
 `
 
-const RenderBody = ({ home, projects, meta }) => (
+const RenderBody = ({ home, projects, meta, ideas }) => (
     <>
         <Helmet
             title={meta.title}
@@ -174,9 +200,13 @@ const RenderBody = ({ home, projects, meta }) => (
             <>
                 {RichText.render(home.about_header)}
             </>
-            <>
-                {RichText.render(home.about_main_text)}
-            </>
+            <AboutDiv>
+                <>
+                    {RichText.render(home.about_main_text)}
+                </>
+                <img width="280px" height="280px" src={home.profile_photo.url} alt={'Kinanti'} />
+            </AboutDiv>
+
             <>
                 {RichText.render(home.about_links_header)}
             </>
@@ -184,6 +214,25 @@ const RenderBody = ({ home, projects, meta }) => (
                 {RichText.render(home.about_links_section)}
             </>
         </AboutSection>
+        <Hero>
+            <>
+                {RichText.render(home.ideas_header)}
+            </>
+            <>
+                {RichText.render(home.ideas_subheading)}
+            </>
+        </Hero>
+        <Section>
+            {ideas.map((idea, i) => (
+                <ProjectCard
+                    key={i}
+                    title={idea.node.title}
+                    description={''}
+                    thumbnail={idea.node.thumbnail}
+                    uid={idea.node.link}
+                />
+            ))}
+        </Section>
     </>
 );
 
@@ -191,13 +240,14 @@ export default ({ data }) => {
     //Required check for no data being returned
     const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
     const projects = data.prismic.allProjects.edges;
+    const ideas = data.prismic.allIdeass.edges;
     const meta = data.site.siteMetadata;
 
-    if (!doc || !projects) return null;
+    if (!doc || !projects || !ideas) return null;
 
     return (
         <Layout>
-            <RenderBody home={doc.node} projects={projects} meta={meta} />
+            <RenderBody home={doc.node} projects={projects} meta={meta} ideas={ideas} />
         </Layout>
     )
 }
@@ -206,6 +256,7 @@ RenderBody.propTypes = {
     home: PropTypes.object.isRequired,
     projects: PropTypes.array.isRequired,
     meta: PropTypes.object.isRequired,
+    ideas: PropTypes.array.isRequired,
 };
 
 export const query = graphql`
@@ -221,6 +272,9 @@ export const query = graphql`
                         about_main_text
                         about_links_header
                         about_links_section
+                        ideas_header
+                        ideas_subheading
+                        profile_photo
                     }
                 }
             }
@@ -235,6 +289,20 @@ export const query = graphql`
                         _meta {
                             uid
                         }
+                    }
+                }
+            }
+            allIdeass {
+                edges {
+                    node {
+                        title
+                        link {
+                            __typename
+                            ... on PRISMIC__ExternalLink{
+                              url
+                            }
+                        }
+                        thumbnail
                     }
                 }
             }

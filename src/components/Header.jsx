@@ -46,6 +46,7 @@ const HeaderLinks = styled("div")`
 
         &:hover {
             color: ${colors.onHoverOrange};
+            text-decoration: underline;
         }
 
         &.Link--is-active {
