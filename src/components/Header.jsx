@@ -5,10 +5,14 @@ import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
 import ContactOverlay from "../components/ContactOverlay";
+import Menu from "../images/Menu.svg";
 
 const HeaderContainer = styled("div")`
     padding-top: 21.4px;
     padding-bottom: 3em;
+    padding-right: 3em;
+    max-width: 100%;
+
     img, button {
         padding-top: 0;
     }
@@ -17,28 +21,7 @@ const HeaderContainer = styled("div")`
 const HeaderContent = styled("div")`
     display: flex;
     justify-content: space-between;
-`
-const LayoutContainer = styled.div`
-    max-width: ${dimensions.maxwidthDesktop}px;
-    padding-left: ${dimensions.paddingHorizontalDesktop}em;
-    padding-right: ${dimensions.paddingHorizontalDesktop}em;
-    margin: 0 auto;
-
-    @media(max-width: ${dimensions.maxwidthTablet}px) {
-        padding-left: ${dimensions.paddingHorizontalTablet}em;
-        padding-right: ${dimensions.paddingHorizontalTablet}em;
-    }
-
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
-        padding-left: ${dimensions.paddingHorizontalMobile}em;
-        padding-right: ${dimensions.paddingHorizontalMobile}em;
-    }
-
-    .Layout__content {
-        padding-bottom: 5em;
-    }
 `;
-
 
 const HeaderLinks = styled("div")`
     display: grid;
@@ -46,18 +29,13 @@ const HeaderLinks = styled("div")`
     grid-gap: 2em;
     justify-content: flex-end;
     width: 100%;
-    max-width: 200px;
+    max-width: 100%;
     text-transform: uppercase;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
-        grid-gap: 5.5em;
+        display: flex;
     }
-
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
-        grid-gap: 2.5em;
-        padding-top: 0.65em;
-    }
-    a, button {
+    a {
         background: ${colors.black};
         border: none;
         cursor: pointer;
@@ -71,7 +49,9 @@ const HeaderLinks = styled("div")`
         padding-top: 0.50em;
         display: block;
         position: relative;
-
+        @media(max-width: ${dimensions.maxwidthTablet}px) {
+            visibility: hidden;
+        }
         &:hover {
             color: ${colors.onHoverOrange};
             text-decoration: underline;
@@ -80,6 +60,14 @@ const HeaderLinks = styled("div")`
         &.Link--is-active {
             color: ${colors.orange};
             text-decoration: underline;
+        }
+    }
+    img {
+        padding-top: 0;
+        cursor: pointer;
+        visibility: hidden;
+        @media(max-width: ${dimensions.maxwidthTablet}px) {
+            visibility: visible;
         }
     }
 `
@@ -92,7 +80,7 @@ function Header() {
         <>
             <HeaderContainer>
                 <HeaderContent>
-                    <Link to="/" style={{ paddingBottom: "20px" }}>
+                    <Link to="/">
                         <Logo />
                     </Link>
                     <HeaderLinks>
@@ -105,23 +93,24 @@ function Header() {
                             activeClassName="Link--is-active"
                             to="/#about">
                             About
-                </Link>
+                    </Link>
                         <Link
                             activeClassName="Link--is-active"
                             to="/#ideas">
                             Ideas
-                </Link>
+                    </Link>
                         <a
                             onClick={() => { setOpen(true) }}
                             activeClassName="Link--is-active"
                         >
                             Contact
                     </a>
+                        <img width="40px" height="40px" src={Menu} onClick={() => { }} />
                     </HeaderLinks>
                 </HeaderContent>
             </HeaderContainer>
             {open ?
-                <ContactOverlay setOpen={setOpen}/>
+                <ContactOverlay setOpen={setOpen} />
                 : <> </>}
         </>
     )

@@ -87,15 +87,15 @@ const Project = ({ project, meta }) => {
             />
             <Layout>
                 <ProjectTitle>
-                    {RichText.asText(project.data.project_title.text)}
+                    {project.data.project_title.text}
                 </ProjectTitle>
-                {project.project_hero_image && (
+                {project.data.project_hero_image && (
                     <ProjectHeroContainer>
-                        <img src={project.project_hero_image.url} alt="bees" />
+                        <img src={project.data.project_hero_image.url} alt="bees" />
                     </ProjectHeroContainer>
                 )}
                 <ProjectBody>
-                    {RichText.render(project.project_description)}
+                    {RichText.render(project.data.project_description)}
                 </ProjectBody>
             </Layout>
         </>

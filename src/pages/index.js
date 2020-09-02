@@ -119,8 +119,15 @@ const Section = styled("div")`
     overflow-y: hidden;
     display:inline-block;
     white-space:nowrap;
+    max-width: 100%;
+
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
+        margin-bottom: 4em;
+    }
+
+    
+    @media(max-width:${dimensions.maxwidthMobile}px) {
         margin-bottom: 4em;
     }
 
