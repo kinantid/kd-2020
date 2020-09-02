@@ -94,7 +94,7 @@ export default function Footer() {
                     <SocialImage width="24px" height="24px" alt="Twitter logo" src={twitter}>
                     </SocialImage>
                 </a>
-                <a href="medium.com/@kinantid">
+                <a href="https://medium.com/@kinantid">
                     <SocialImage width="24px" height="24px" alt="Medium logo" src={medium}>
                     </SocialImage>
                 </a>
