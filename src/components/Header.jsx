@@ -1,6 +1,5 @@
 import React from "react";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
@@ -133,15 +132,15 @@ function Header() {
         <>
             <HeaderContainer>
                 <HeaderContent>
-                    <Link to="/" style={{ paddingBottom: "20px" }}>
+                    <AnchorLink to="/" style={{ paddingBottom: "20px" }}>
                         <Logo />
-                    </Link>
+                    </AnchorLink>
                     <HeaderLinks>
-                        <Link
+                        <AnchorLink
                             activeClassName="Link--is-active"
                             to="/">
                             Projects
-                         </Link>
+                         </AnchorLink>
                         <AnchorLink
                             activeClassName="Link--is-active"
                             to="/#about">
@@ -166,9 +165,9 @@ function Header() {
                     <LayoutContainer>
                         <HeaderContainer>
                             <HeaderContent>
-                                <Link to="/" style={{ paddingBottom: "20px" }}>
+                                <AnchorLink to="/" style={{ paddingBottom: "20px" }}>
                                     <Logo />
-                                </Link>
+                                </AnchorLink>
                                 <img width="40px" height="40px" src={Close} onClick={() => { setOpen(false) }} />
                             </HeaderContent>
                         </HeaderContainer>

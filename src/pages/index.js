@@ -9,6 +9,7 @@ import dimensions from "styles/dimensions";
 import About from "components/About";
 import Layout from "components/Layout";
 import ProjectCard from "components/ProjectCard";
+import IdeaCard from "components/IdeaCard";
 
 const Hero = styled("div")`
     padding-top: 2.5em;
@@ -224,10 +225,9 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
         </Hero>
         <Section>
             {ideas.map((idea, i) => (
-                <ProjectCard
+                <IdeaCard
                     key={i}
                     title={idea.node.title}
-                    description={''}
                     thumbnail={idea.node.thumbnail}
                     uid={idea.node.link}
                 />
