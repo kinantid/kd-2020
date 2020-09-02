@@ -33,6 +33,7 @@ module.exports = {
           ideas: require('./src/schemas/ideas.json'),
           project: require('./src/schemas/project.json'),
           post: require('./src/schemas/post.json'),
+          contact: require('./src/schemas/contact.json')
         },
       }
     },

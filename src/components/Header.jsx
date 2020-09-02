@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
-import Close from "../images/Close.svg";
+import ContactOverlay from "../components/ContactOverlay";
 
 const HeaderContainer = styled("div")`
     padding-top: 21.4px;
@@ -84,48 +84,6 @@ const HeaderLinks = styled("div")`
     }
 `
 
-const ContactOverlay = styled("div")`
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    background-color: ${colors.black};
-    overflow-x: hidden;
-    overflow-y: hidden;
-
-`
-const Hero = styled("div")`
-    padding-top: 2.5em;
-    padding-bottom: 3em;
-    @media(max-width:${dimensions.maxwidthMobile}px) {
-       margin-bottom: 3em;
-    }
-
-    h1 {
-        margin-bottom: 1em;
-        font-size: 40px;
-
-        a {
-            text-decoration: none;
-
-            color: ${colors.orange};
-
-            &:hover {
-                color: ${colors.onHoverOrange};
-            }
-        }
-    }
-
-    h2 {
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 32px;
-        color: ${colors.grey2}
-    }
-`
-
 
 function Header() {
     const [open, setOpen] = React.useState(false);
@@ -163,23 +121,7 @@ function Header() {
                 </HeaderContent>
             </HeaderContainer>
             {open ?
-                <ContactOverlay>
-                    <LayoutContainer>
-                        <HeaderContainer>
-                            <HeaderContent>
-                                <Link to="/" style={{ paddingBottom: "20px" }} onClick={() => { setOpen(false) }}>
-                                    <Logo />
-                                </Link>
-                                <img width="40px" height="40px" src={Close} onClick={() => { setOpen(false) }} />
-                            </HeaderContent>
-                        </HeaderContainer>
-                        <Hero>
-                            <h1>Get in touch </h1>
-
-                        </Hero>
-                    </LayoutContainer>
-                </ContactOverlay>
-
+                <ContactOverlay setOpen={setOpen}/>
                 : <> </>}
         </>
     )
