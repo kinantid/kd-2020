@@ -1,5 +1,5 @@
 import React from "react";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { Link } from "gatsby"
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import dimensions from "styles/dimensions";
@@ -9,7 +9,7 @@ import Close from "../images/Close.svg";
 const HeaderContainer = styled("div")`
     padding-top: 21.4px;
     padding-bottom: 3em;
-    img {
+    img, button {
         padding-top: 0;
     }
 `
@@ -132,25 +132,25 @@ function Header() {
         <>
             <HeaderContainer>
                 <HeaderContent>
-                    <AnchorLink to="/" style={{ paddingBottom: "20px" }}>
+                    <Link to="/" style={{ paddingBottom: "20px" }}>
                         <Logo />
-                    </AnchorLink>
+                    </Link>
                     <HeaderLinks>
-                        <AnchorLink
+                        <Link
                             activeClassName="Link--is-active"
                             to="/">
                             Projects
-                         </AnchorLink>
-                        <AnchorLink
+                         </Link>
+                        <Link
                             activeClassName="Link--is-active"
                             to="/#about">
                             About
-                </AnchorLink>
-                        <AnchorLink
+                </Link>
+                        <Link
                             activeClassName="Link--is-active"
                             to="/#ideas">
                             Ideas
-                </AnchorLink>
+                </Link>
                         <button
                             onClick={() => { setOpen(true) }}
                             activeClassName="Link--is-active"
@@ -165,9 +165,9 @@ function Header() {
                     <LayoutContainer>
                         <HeaderContainer>
                             <HeaderContent>
-                                <AnchorLink to="/" style={{ paddingBottom: "20px" }}>
+                                <Link to="/" style={{ paddingBottom: "20px" }}>
                                     <Logo />
-                                </AnchorLink>
+                                </Link>
                                 <img width="40px" height="40px" src={Close} onClick={() => { setOpen(false) }} />
                             </HeaderContent>
                         </HeaderContainer>

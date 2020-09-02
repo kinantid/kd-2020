@@ -1,12 +1,12 @@
 import React from "react";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { Link } from "gatsby";
 import { RichText } from "prismic-reactjs";
 import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
 
-const ProjectCardContainer = styled(AnchorLink)`
+const ProjectCardContainer = styled(Link)`
     transition: all 150ms ease-in-out;
     text-decoration: none;
     border-radius: 4px;
@@ -99,23 +99,19 @@ const ProjectCardImageContainer = styled("div")`
 const ProjectCard = ({ title, description, thumbnail, uid }) => (
     <ProjectCardContainer to={`/work/${uid}/`}>
         <ProjectCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} alt={title[0].text} />
+            <img src={thumbnail.url} alt={title.text} />
         </ProjectCardImageContainer>
         <ProjectCardContent className="ProjectCardContent">
             <ProjectCardTitle>
-                {title[0].text}
+                {title.text}
             </ProjectCardTitle>
-            {!description ? <></> :
-                <>
                     <ProjectCardBlurb>
-                        {RichText.asText(description)}
+                        {description.text}
                     </ProjectCardBlurb>
                     <ProjectCardAction className="ProjectCardAction">
 
                         VIEW CASE STUDY
                         <span>{'>'}</span> </ProjectCardAction>
-                </>
-            }
         </ProjectCardContent>
     </ProjectCardContainer>
 )

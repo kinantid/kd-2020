@@ -66,14 +66,14 @@ const IdeaCardImageContainer = styled("div")`
     }
 `
 
-const IdeaCard = ({ title, thumbnail, uid }) => (
-    <IdeaCardContainer href={uid.url}>
+const IdeaCard = ({ title, thumbnail, link }) => (
+    <IdeaCardContainer href={link.url}>
         <IdeaCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} alt={title[0].text} />
+            <img src={thumbnail.url} alt={title.text} />
         </IdeaCardImageContainer>
         <IdeaCardContent className="ProjectCardContent">
             <IdeaCardTitle>
-                {title[0].text}
+                {title.text}
             </IdeaCardTitle>
         </IdeaCardContent>
     </IdeaCardContainer>
@@ -84,5 +84,5 @@ export default IdeaCard;
 IdeaCard.propTypes = {
     thumbnail: PropTypes.object.isRequired,
     title: PropTypes.array.isRequired,
-    uid: PropTypes.string.isRequired
+    link: PropTypes.object.isRequired
 }

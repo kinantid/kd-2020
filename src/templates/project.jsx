@@ -23,7 +23,7 @@ const ProjectHeroContainer = styled("div")`
     }
 `
 
-const ProjectTitle = styled("div") `
+const ProjectTitle = styled("div")`
     max-width: 550px;
     margin: 0 auto;
     text-align: center;
@@ -43,18 +43,12 @@ const ProjectBody = styled("div")`
     }
 `
 
-const WorkLink = styled(Link)`
-    margin-top: 3em;
-    display: block;
-    text-align: center;
-`
-
 
 const Project = ({ project, meta }) => {
     return (
         <>
             <Helmet
-                title={`${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`}
+                title={`${project.data.project_title.text} | Prist, Gatsby & Prismic Starter`}
                 titleTemplate={`%s | ${meta.title}`}
                 meta={[
                     {
@@ -63,7 +57,7 @@ const Project = ({ project, meta }) => {
                     },
                     {
                         property: `og:title`,
-                        content: `${project.project_title[0].text} | Prist, Gatsby & Prismic Starter`,
+                        content: `${project.data.project_title.text} | Prist, Gatsby & Prismic Starter`,
                     },
                     {
                         property: `og:description`,
@@ -93,7 +87,7 @@ const Project = ({ project, meta }) => {
             />
             <Layout>
                 <ProjectTitle>
-                    {RichText.render(project.project_title)}
+                    {RichText.asText(project.data.project_title.text)}
                 </ProjectTitle>
                 {project.project_hero_image && (
                     <ProjectHeroContainer>
@@ -102,11 +96,6 @@ const Project = ({ project, meta }) => {
                 )}
                 <ProjectBody>
                     {RichText.render(project.project_description)}
-                    <WorkLink to={"/work"}>
-                        <Button className="Button--secondary">
-                            See other work
-                        </Button>
-                    </WorkLink>
                 </ProjectBody>
             </Layout>
         </>
@@ -114,10 +103,10 @@ const Project = ({ project, meta }) => {
 }
 
 export default ({ data }) => {
-    const projectContent = data.prismic.allProjects.edges[0].node;
+    const projectContent = data.allPrismicProject.edges[0].node;
     const meta = data.site.siteMetadata;
     return (
-        <Project project={projectContent} meta={meta}/>
+        <Project project={projectContent} meta={meta} />
     )
 }
 
@@ -127,24 +116,34 @@ Project.propTypes = {
 
 export const query = graphql`
     query ProjectQuery($uid: String) {
-        prismic {
-            allProjects(uid: $uid) {
+            allPrismicProject(filter: { uid : { eq: $uid } }) {
                 edges {
                     node {
-                        project_title
-                        project_preview_description
-                        project_preview_thumbnail
-                        project_category
-                        project_post_date
-                        project_hero_image
-                        project_description
-                        _meta {
-                            uid
+                        data {
+                            project_title {
+                                text
+                            }
+                            project_preview_description {
+                                text
+                            }
+                            project_preview_thumbnail {
+                                url
+                            }
+                            project_category {
+                                text
+                            }
+                            project_post_date
+                            project_hero_image {
+                                url
+                            }
+                            project_description {
+                                text
+                            }
                         }
+                        uid
                     }
                 }
             }
-        }
         site {
             siteMetadata {
                 title

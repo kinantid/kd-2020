@@ -39,7 +39,7 @@ const typeStyles = css`
         margin-bottom: 1.45rem;
         font-weight: 500;
         font-size: 16px;
-                color: white;
+        color: white;
     }
 
     h6 {

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Kina's Design Portfolio Site`,
-        description: ``,
+    description: ``,
     author: `Kinanti D`,
   },
   plugins: [
@@ -21,21 +21,26 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-anchor-links`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-        resolve: 'gatsby-source-prismic-graphql',
-        options: {
-            repositoryName: 'kd2020', // (REQUIRED, replace with your own)
-            linkResolver: () => post => `/${post.uid}`,
-        }
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'kd2020',
+        schemas: {
+          homepage: require('./src/schemas/homepage.json'),
+          header_and_footer: require('./src/schemas/header_and_footer.json'),
+          ideas: require('./src/schemas/ideas.json'),
+          project: require('./src/schemas/project.json'),
+          post: require('./src/schemas/post.json'),
+        },
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-prismic-starter-prist`,
-        short_name: `prist`,
+        name: `Kinanti D Portfolio Website`,
+        short_name: `Kina's portfolio`,
         start_url: `/`,
         background_color: `#1a1a1a`,
         theme_color: `#1a1a1a`,
@@ -45,11 +50,11 @@ module.exports = {
     },
     // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
     {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-            trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
-            head: true,
-        },
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+        head: true,
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

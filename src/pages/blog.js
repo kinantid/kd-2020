@@ -89,12 +89,12 @@ const Blog = ({ posts, meta }) => (
 );
 
 export default ({ data }) => {
-    const posts = data.prismic.allPosts.edges;
+    const posts = data.allPrismicPost.edges.node;
     const meta = data.site.siteMetadata;
     if (!posts) return null;
 
     return (
-        <Blog posts={posts} meta={meta}/>
+        <Blog posts={posts} meta={meta} />
     )
 }
 
@@ -106,21 +106,25 @@ Blog.propTypes = {
 
 export const query = graphql`
     {
-        prismic {
-            allPosts(sortBy: post_date_DESC) {
+            allPrismicPost {
                 edges {
                     node {
-                        post_title
-                        post_date
-                        post_category
-                        post_preview_description
-                        post_author
-                        _meta {
-                            uid
+                        uid
+                        data {
+                            post_title {
+                                text
+                            }
+                            post_date
+                            post_category {
+                                text
+                            }
+                            post_preview_description {
+                                text
+                            }
+                            post_author
                         }
                     }
                 }
-            }
         }
         site {
             siteMetadata {

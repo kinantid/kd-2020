@@ -178,58 +178,58 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
             ].concat(meta)}
         />
         <Hero>
-            <>
-                {RichText.render(home.hero_title)}
-            </>
-            <>
-                {RichText.render(home.hero_subtitle)}
-            </>
+        <div dangerouslySetInnerHTML={{
+                __html: home.hero_title.html
+            }} />
+        <div dangerouslySetInnerHTML={{
+                __html: home.hero_subtitle.html
+            }} />
         </Hero>
         <Section>
             {projects.map((project, i) => (
                 <ProjectCard
                     key={i}
-                    category={project.node.project_category}
-                    title={project.node.project_title}
-                    description={project.node.project_preview_description}
-                    thumbnail={project.node.project_preview_thumbnail}
-                    uid={project.node._meta.uid}
+                    category={project.node.data.project_category}
+                    title={project.node.data.project_title}
+                    description={project.node.data.project_preview_description}
+                    thumbnail={project.node.data.project_preview_thumbnail}
+                    uid={project.node.uid}
                 />
             ))}
         </Section>
         <AboutSection id="about">
-            <>
-                {RichText.render(home.about_header)}
-            </>
+            <div dangerouslySetInnerHTML={{
+                __html: home.about_header.html
+            }} />
             <AboutDiv>
-                <>
-                    {RichText.render(home.about_main_text)}
-                </>
+                <div dangerouslySetInnerHTML={{
+                    __html: home.about_main_text.html
+                }} />
                 <img width="280px" height="280px" src={home.profile_photo.url} alt={'Kinanti'} />
             </AboutDiv>
+            <div dangerouslySetInnerHTML={{
+                __html: home.about_links_header.html
+            }} />
+            <div dangerouslySetInnerHTML={{
+                __html: home.about_links_section.html
+            }} />
 
-            <>
-                {RichText.render(home.about_links_header)}
-            </>
-            <>
-                {RichText.render(home.about_links_section)}
-            </>
         </AboutSection>
         <Hero id="ideas">
-            <>
-                {RichText.render(home.ideas_header)}
-            </>
-            <>
-                {RichText.render(home.ideas_subheading)}
-            </>
+        <div dangerouslySetInnerHTML={{
+                __html: home.ideas_header.html
+            }} />
+            <div dangerouslySetInnerHTML={{
+                __html: home.ideas_subheading.html
+            }} />
         </Hero>
         <Section>
             {ideas.map((idea, i) => (
                 <IdeaCard
                     key={i}
-                    title={idea.node.title}
-                    thumbnail={idea.node.thumbnail}
-                    uid={idea.node.link}
+                    title={idea.node.data.title}
+                    thumbnail={idea.node.data.thumbnail}
+                    link={idea.node.data.link}
                 />
             ))}
         </Section>
@@ -238,16 +238,16 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
 
 export default ({ data }) => {
     //Required check for no data being returned
-    const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
-    const projects = data.prismic.allProjects.edges;
-    const ideas = data.prismic.allIdeass.edges;
+    const doc = data.allPrismicHomepage.edges.slice(0, 1).pop().node.data;
+    const projects = data.allPrismicProject.edges;
+    const ideas = data.allPrismicIdeas.edges;
     const meta = data.site.siteMetadata;
 
     if (!doc || !projects || !ideas) return null;
 
     return (
         <Layout>
-            <RenderBody home={doc.node} projects={projects} meta={meta} ideas={ideas} />
+            <RenderBody home={doc} projects={projects} meta={meta} ideas={ideas} />
         </Layout>
     )
 }
@@ -261,58 +261,90 @@ RenderBody.propTypes = {
 
 export const query = graphql`
     {
-        prismic {
-            allHomepages {
+        allPrismicHomepage {
                 edges {
                     node {
-                        hero_title
-                        hero_subtitle
-                        content
-                        about_header
-                        about_main_text
-                        about_links_header
-                        about_links_section
-                        ideas_header
-                        ideas_subheading
-                        profile_photo
-                    }
-                }
-            }
-            allProjects {
-                edges {
-                    node {
-                        project_title
-                        project_preview_description
-                        project_preview_thumbnail
-                        project_category
-                        project_post_date
-                        _meta {
-                            uid
-                        }
-                    }
-                }
-            }
-            allIdeass {
-                edges {
-                    node {
-                        title
-                        link {
-                            __typename
-                            ... on PRISMIC__ExternalLink{
-                              url
+                        data {
+                            hero_title {
+                                html
+                            }
+                            hero_subtitle {
+                                html
+                            }
+                            content {
+                                html
+                            }
+                            about_header {
+                                html
+                            }
+                            about_main_text {
+                                html
+                            }
+                            about_links_header {
+                                html
+                            }
+                            about_links_section {
+                                html
+                            }
+                            ideas_header {
+                                html
+                            }
+                            ideas_subheading {
+                                html
+                            }
+                            profile_photo {
+                                url
                             }
                         }
-                        thumbnail
                     }
                 }
             }
-        }
+            allPrismicProject {
+                edges {
+                    node {
+                        data {
+                            project_title {
+                                text
+                            }
+                            project_preview_description {
+                                text
+                            }
+                            project_preview_thumbnail {
+                                url
+                            }
+                            project_category {
+                                text
+                            }
+                            project_post_date
+                        }
+                        uid
+                    }
+                }
+            }
+            allPrismicIdeas {
+                edges {
+                    node {
+                        data {
+                            title {
+                                text
+                            }
+                            link {
+                                url
+                                target
+                            }
+                            thumbnail {
+                                url
+                            }
+                        }
+                    }
+                }
+            }
         site {
             siteMetadata {
                 title
                 description
                 author
             }
-        }
     }
+}
 `

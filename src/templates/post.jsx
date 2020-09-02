@@ -148,7 +148,7 @@ const Post = ({ post, meta }) => {
                         <Moment format="MMMM D, YYYY">{post.post_date}</Moment>
                     </PostDate>
                 </PostMetas>
-                    {post.post_hero_image && (
+                {post.post_hero_image && (
                     <PostHeroContainer>
                         <img src={post.post_hero_image.url} alt="bees" />
                         <PostHeroAnnotation>
@@ -168,7 +168,7 @@ export default ({ data }) => {
     const postContent = data.prismic.allPosts.edges[0].node;
     const meta = data.site.siteMetadata;
     return (
-        <Post post={postContent} meta={meta}/>
+        <Post post={postContent} meta={meta} />
     )
 }
 
@@ -179,24 +179,34 @@ Post.propTypes = {
 
 export const query = graphql`
     query PostQuery($uid: String) {
-        prismic {
-            allPosts(uid: $uid) {
-                edges {
+        allPrismicPost(filter: { uid : { eq: $uid } }) {
+            edges {
                     node {
-                        post_title
-                        post_hero_image
-                        post_hero_annotation
-                        post_date
-                        post_category
-                        post_body
-                        post_author
-                        post_preview_description
-                        _meta {
-                            uid
+                        data {
+                            post_title {
+                                text
+                            }
+                            post_hero_image {
+                                url
+                            }
+                            post_hero_annotation {
+                                text
+                            }
+                            post_date
+                            post_category {
+                                text
+                            }
+                            post_body {
+                                text
+                            }
+                            post_author
+                            post_preview_description {
+                                text
+                            }
                         }
+                        uid
                     }
                 }
-            }
         }
         site {
             siteMetadata {

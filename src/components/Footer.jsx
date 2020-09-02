@@ -7,7 +7,6 @@ import medium from "../images/Medium Logo.svg";
 import twitter from "../images/Twitter Logo.svg";
 import dimensions from "styles/dimensions";
 import { graphql, useStaticQuery } from "gatsby";
-import { RichText } from "prismic-reactjs";
 
 const FooterContainer = styled("div")`
     display: flex;
@@ -65,21 +64,26 @@ const SocialImage = styled("img")`
 export default function Footer() {
     const data = useStaticQuery(graphql`
     {
-        prismic {
-            allHeader_and_footers {
+        allPrismicHeaderAndFooter {
                 edges {
                     node {
-                        footer_text
+                        id
+                        data {
+                            footer_text {
+                                html
+                            }
+                        }
                     }
                 }
             }
-        }
+        
     }
 `)
     return (
         <FooterContainer>
-            <TextContainer>
-                {RichText.render(data.prismic.allHeader_and_footers.edges.slice(0, 1).pop().node.footer_text)}
+            <TextContainer dangerouslySetInnerHTML={{
+                __html: data.allPrismicHeaderAndFooter.edges.slice(0, 1).pop().node.data.footer_text.html
+            }}>
             </TextContainer>
             <SocialLinksContainer>
                 <a href="mailto:kinanti.desy@gmail.com">
