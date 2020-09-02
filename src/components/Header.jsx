@@ -93,6 +93,8 @@ const ContactOverlay = styled("div")`
     top: 0;
     background-color: ${colors.black};
     overflow-x: hidden;
+    overflow-y: hidden;
+
 `
 const Hero = styled("div")`
     padding-top: 2.5em;
@@ -151,12 +153,12 @@ function Header() {
                             to="/#ideas">
                             Ideas
                 </Link>
-                        <button
+                        <a
                             onClick={() => { setOpen(true) }}
                             activeClassName="Link--is-active"
                         >
                             Contact
-                    </button>
+                    </a>
                     </HeaderLinks>
                 </HeaderContent>
             </HeaderContainer>
@@ -165,7 +167,7 @@ function Header() {
                     <LayoutContainer>
                         <HeaderContainer>
                             <HeaderContent>
-                                <Link to="/" style={{ paddingBottom: "20px" }}>
+                                <Link to="/" style={{ paddingBottom: "20px" }} onClick={() => { setOpen(false) }}>
                                     <Logo />
                                 </Link>
                                 <img width="40px" height="40px" src={Close} onClick={() => { setOpen(false) }} />
