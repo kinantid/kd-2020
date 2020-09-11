@@ -10,7 +10,6 @@ import Menu from "../images/Menu.svg";
 const HeaderContainer = styled("div")`
     padding-top: 21.4px;
     padding-bottom: 3em;
-    padding-right: 3em;
     max-width: 100%;
 
     img, button {

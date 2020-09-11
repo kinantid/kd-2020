@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
-import { Link, graphql } from 'gatsby';
-import { RichText } from "prismic-reactjs";
-import Button from "components/_ui/Button";
-import Layout from "components/Layout";
+import { graphql } from 'gatsby';
+import ProjectLayout from "components/ProjectLayout";
+import dimensions from "../styles/dimensions";
 
 const ProjectHeroContainer = styled("div")`
     background: ${colors.grey200};
@@ -18,14 +17,28 @@ const ProjectHeroContainer = styled("div")`
     padding-top: 2.25em;
 
     img {
-        max-height: 700px;
         width: 100%;
     }
+
 `
 
 const ProjectTitle = styled("h1")`
     margin: 0 auto;
     text-align: left;
+    max-width: ${dimensions.maxwidthDesktop}px;
+    padding-left: ${dimensions.paddingHorizontalDesktop}em;
+    padding-right: ${dimensions.paddingHorizontalDesktop}em;
+    margin: 0 auto;
+
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        padding-left: ${dimensions.paddingHorizontalTablet}em;
+        padding-right: ${dimensions.paddingHorizontalTablet}em;
+    }
+
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+        padding-left: ${dimensions.paddingHorizontalMobile}em;
+        padding-right: ${dimensions.paddingHorizontalMobile}em;
+    }
 `
 
 const ProjectBody = styled("div")`
@@ -110,7 +123,7 @@ const Project = ({ project, meta }) => {
                     },
                 ].concat(meta)}
             />
-            <Layout>
+            <ProjectLayout>
                 <ProjectTitle>
                     {project.data.project_title.text}
                 </ProjectTitle>
@@ -128,7 +141,7 @@ const Project = ({ project, meta }) => {
                         }} />
                     </ProjectText>
                 </ProjectBody>
-            </Layout >
+            </ProjectLayout>
         </>
     )
 }
