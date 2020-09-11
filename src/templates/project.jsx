@@ -16,22 +16,23 @@ const ProjectHeroContainer = styled("div")`
     overflow: hidden;
     position: relative;
     padding-top: 2.25em;
-    margin-bottom: 3.5em;
 
     img {
-        max-width: 600px;
+        max-height: 700px;
+        width: 100%;
     }
 `
 
-const ProjectTitle = styled("div")`
-    max-width: 550px;
+const ProjectTitle = styled("h1")`
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 `
 
 const ProjectBody = styled("div")`
-    max-width: 550px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0 !important;
+    max-width: 100% !important;
+    background: white;
 
     .block-img {
         margin-top: 3.5em;
@@ -43,21 +44,45 @@ const ProjectBody = styled("div")`
     }
 `
 
+const ProjectText = styled("div")`
+padding-left: 15%;
+padding-right: 15%;
+padding-top: 20px;
+padding-bottom: 20px;
+
+h1, h2, h3, h4, h5, h6, p, li, a, strong {
+    color: black;
+    ::selection {
+        color: black;
+        background: #87CEFA;
+      }
+    ::-moz-selection {
+        color: black;
+        background: #87CEFA;
+      }
+
+    a:hover {
+        color: ${colors.onHoverOrange};
+    }
+}
+`
+
+
 
 const Project = ({ project, meta }) => {
     return (
         <>
             <Helmet
                 title={`${project.data.project_title.text} | Prist, Gatsby & Prismic Starter`}
-                titleTemplate={`%s | ${meta.title}`}
+                titleTemplate={`% s | ${meta.title} `}
                 meta={[
                     {
                         name: `description`,
                         content: meta.description,
                     },
                     {
-                        property: `og:title`,
-                        content: `${project.data.project_title.text} | Prist, Gatsby & Prismic Starter`,
+                        property: `og: title`,
+                        content: `${project.data.project_title.text} | Kina's portfolio`,
                     },
                     {
                         property: `og:description`,
@@ -89,15 +114,21 @@ const Project = ({ project, meta }) => {
                 <ProjectTitle>
                     {project.data.project_title.text}
                 </ProjectTitle>
-                {project.data.project_hero_image && (
-                    <ProjectHeroContainer>
-                        <img src={project.data.project_hero_image.url} alt="bees" />
-                    </ProjectHeroContainer>
-                )}
+                {
+                    project.data.project_hero_image && (
+                        <ProjectHeroContainer>
+                            <img src={project.data.project_hero_image.url} alt="bees" />
+                        </ProjectHeroContainer>
+                    )
+                }
                 <ProjectBody>
-                    {RichText.render(project.data.project_description)}
+                    <ProjectText>
+                        <div dangerouslySetInnerHTML={{
+                            __html: project.data.project_description.html
+                        }} />
+                    </ProjectText>
                 </ProjectBody>
-            </Layout>
+            </Layout >
         </>
     )
 }
@@ -124,7 +155,7 @@ export const query = graphql`
                                 text
                             }
                             project_preview_description {
-                                text
+                                html
                             }
                             project_preview_thumbnail {
                                 url
@@ -137,7 +168,7 @@ export const query = graphql`
                                 url
                             }
                             project_description {
-                                text
+                                html
                             }
                         }
                         uid
