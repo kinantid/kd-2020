@@ -23,18 +23,18 @@ const ProjectHeroContainer = styled("div")`
 `
 const ProjectTitleAndDetailsContainer = styled.div`
 max-width: ${dimensions.maxwidthDesktop}px;
-padding-left: ${dimensions.paddingHorizontalDesktop / 2}em;
-padding-right: ${dimensions.paddingHorizontalDesktop / 2}em;
+padding-left: ${dimensions.paddingHorizontalDesktop}em;
+padding-right: ${dimensions.paddingHorizontalDesktop}em;
 margin: 0 auto;
 
 @media(max-width: ${dimensions.maxwidthTablet}px) {
-    padding-left: ${dimensions.paddingHorizontalTablet / 2}em;
-    padding-right: ${dimensions.paddingHorizontalTablet / 2}em;
+    padding-left: ${dimensions.paddingHorizontalTablet}em;
+    padding-right: ${dimensions.paddingHorizontalTablet}em;
 }
 
 @media(max-width: ${dimensions.maxwidthMobile}px) {
-    padding-left: ${dimensions.paddingHorizontalMobile / 2}em;
-    padding-right: ${dimensions.paddingHorizontalMobile / 2}em;
+    padding-left: ${dimensions.paddingHorizontalMobile}em;
+    padding-right: ${dimensions.paddingHorizontalMobile}em;
 }
 `
 
@@ -126,8 +126,8 @@ const ProjectDetails = styled("div")`
     }
 
     div {
-        min-width: 160px;
-        
+    min-width: 160px;
+
     @media(max-width: ${dimensions.maxwidthMobile}px) {
     padding-right: 24px;
     }
