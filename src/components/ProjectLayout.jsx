@@ -27,15 +27,13 @@ const LayoutContainer = styled.div`
 `;
 
 const ChildrenContainer = styled.div`
-    padding-bottom: 5em;
+    padding-bottom: 3em;
 `
 
 const ProjectLayout = ({ children }) => (
     <div className="div">
         <Global styles={[globalStyles, typeStyles]} />
-        <LayoutContainer>
             <Header />
-        </LayoutContainer>
         <ChildrenContainer>
             <main>
                 {children}

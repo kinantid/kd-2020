@@ -12,11 +12,20 @@ const FooterContainer = styled("div")`
     display: flex;
     justify-content: space-between;
     margin-bottom: 3em;
+    padding-left: ${dimensions.paddingHorizontalDesktop}em;
+    padding-right: ${dimensions.paddingHorizontalDesktop}em;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
+        padding-left: ${dimensions.paddingHorizontalTablet}em;
+        padding-right: ${dimensions.paddingHorizontalTablet}em;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
+    }
+
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+        padding-left: ${dimensions.paddingHorizontalMobile}em;
+        padding-right: ${dimensions.paddingHorizontalMobile}em;
     }
 `
 
@@ -59,6 +68,9 @@ const SocialLinksContainer = styled("div")`
 `
 
 const SocialImage = styled("img")`
+&:hover {
+    color: ${colors.onHoverOrange};
+}
 `
 
 export default function Footer() {

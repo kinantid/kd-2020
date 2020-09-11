@@ -23,6 +23,7 @@ const ProjectHeroContainer = styled("div")`
 `
 const ProjectTitleAndDetailsContainer = styled.div`
 max-width: ${dimensions.maxwidthDesktop}px;
+padding-top: 10em;
 padding-left: ${dimensions.paddingHorizontalDesktop}em;
 padding-right: ${dimensions.paddingHorizontalDesktop}em;
 margin: 0 auto;
@@ -94,7 +95,7 @@ h1, h2, h3, h4, h5, h6, p, li, a, strong {
     color: black;
     ::selection {
         color: black;
-        background: #87CEFA;
+        background: ${colors.orange};
       }
     ::-moz-selection {
         color: black;

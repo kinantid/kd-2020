@@ -8,10 +8,16 @@ import ContactOverlay from "../components/ContactOverlay";
 import Menu from "../images/Menu.svg";
 
 const HeaderContainer = styled("div")`
-    padding-top: 21.4px;
-    padding-bottom: 3em;
     max-width: 100%;
-
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index:1;
+    background: ${colors.black};
+    height: 112px;
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        height: 80px;
+    }
     img, button {
         padding-top: 0;
     }
@@ -20,21 +26,33 @@ const HeaderContainer = styled("div")`
 const HeaderContent = styled("div")`
     display: flex;
     justify-content: space-between;
+    padding-left: ${dimensions.paddingHorizontalDesktop}em;
+    padding-right: ${dimensions.paddingHorizontalDesktop}em;
+    padding-top: 30px;
+    margin: 0 auto;
+
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        padding-left: ${dimensions.paddingHorizontalTablet}em;
+        padding-right: ${dimensions.paddingHorizontalTablet}em;
+        padding-top: 20px;
+    }
+
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+        padding-left: ${dimensions.paddingHorizontalMobile}em;
+        padding-right: ${dimensions.paddingHorizontalMobile}em;
+        padding-top: 20px;
+    }
+    align-items: center;
 `;
 
 const HeaderLinks = styled("div")`
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 2em;
-    justify-content: flex-end;
-    width: 100%;
-    max-width: 100%;
     text-transform: uppercase;
-
+    height: 100%;
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         display: flex;
     }
     a {
+        padding-left: 3em;
         background: ${colors.black};
         border: none;
         cursor: pointer;
@@ -43,13 +61,8 @@ const HeaderLinks = styled("div")`
         text-decoration: none;
         font-size: 14px;
         font-weight: 600;
-        height: 100%;
-        padding-bottom: 1.25em;
-        padding-top: 0.50em;
-        display: block;
-        position: relative;
         @media(max-width: ${dimensions.maxwidthTablet}px) {
-            visibility: hidden;
+            display: none;
         }
         &:hover {
             color: ${colors.onHoverOrange};
@@ -62,11 +75,11 @@ const HeaderLinks = styled("div")`
         }
     }
     img {
-        padding-top: 0;
         cursor: pointer;
-        visibility: hidden;
+        display: none;
+        margin-bottom: 10px;
         @media(max-width: ${dimensions.maxwidthTablet}px) {
-            visibility: visible;
+            display: initial;
         }
     }
 `
