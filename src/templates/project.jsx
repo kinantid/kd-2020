@@ -21,24 +21,38 @@ const ProjectHeroContainer = styled("div")`
     }
 
 `
+const ProjectTitleAndDetailsContainer = styled.div`
+max-width: ${dimensions.maxwidthDesktop}px;
+padding-left: ${dimensions.paddingHorizontalDesktop / 2}em;
+padding-right: ${dimensions.paddingHorizontalDesktop / 2}em;
+margin: 0 auto;
+
+@media(max-width: ${dimensions.maxwidthTablet}px) {
+    padding-left: ${dimensions.paddingHorizontalTablet / 2}em;
+    padding-right: ${dimensions.paddingHorizontalTablet / 2}em;
+}
+
+@media(max-width: ${dimensions.maxwidthMobile}px) {
+    padding-left: ${dimensions.paddingHorizontalMobile / 2}em;
+    padding-right: ${dimensions.paddingHorizontalMobile / 2}em;
+}
+`
 
 const ProjectTitle = styled("h1")`
-    margin: 0 auto;
-    text-align: left;
-    max-width: ${dimensions.maxwidthDesktop}px;
-    padding-left: ${dimensions.paddingHorizontalDesktop}em;
-    padding-right: ${dimensions.paddingHorizontalDesktop}em;
-    margin: 0 auto;
+margin-block-start: 0;
 
-    @media(max-width: ${dimensions.maxwidthTablet}px) {
-        padding-left: ${dimensions.paddingHorizontalTablet}em;
-        padding-right: ${dimensions.paddingHorizontalTablet}em;
-    }
+        font-size: 40px;
+        line-height: 1.45;
+        color: white;
+        font-family: Inter;
 
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
-        padding-left: ${dimensions.paddingHorizontalMobile}em;
-        padding-right: ${dimensions.paddingHorizontalMobile}em;
-    }
+        @media(max-width:${dimensions.maxwidthTablet}px) {
+            font-size: 2.25em;
+        }
+
+        @media(max-width:${dimensions.maxwidthMobile}px) {
+            font-size: 2em;
+        }
 `
 
 const ProjectBody = styled("div")`
@@ -57,9 +71,22 @@ const ProjectBody = styled("div")`
     }
 `
 
+
 const ProjectText = styled("div")`
-padding-left: 15%;
-padding-right: 15%;
+max-width: ${dimensions.maxwidthDesktop}px;
+padding-left: ${dimensions.paddingHorizontalDesktop}em;
+padding-right: ${dimensions.paddingHorizontalDesktop}em;
+margin: 0 auto;
+
+@media(max-width: ${dimensions.maxwidthTablet}px) {
+    padding-left: ${dimensions.paddingHorizontalTablet}em;
+    padding-right: ${dimensions.paddingHorizontalTablet}em;
+}
+
+@media(max-width: ${dimensions.maxwidthMobile}px) {
+    padding-left: ${dimensions.paddingHorizontalMobile}em;
+    padding-right: ${dimensions.paddingHorizontalMobile}em;
+}
 padding-top: 20px;
 padding-bottom: 20px;
 
@@ -79,15 +106,59 @@ h1, h2, h3, h4, h5, h6, p, li, a, strong {
     }
 }
 `
+const ProjectDetails = styled("div")`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+    ::-webkit-scrollbar {
+        height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px ${colors.grey4};
+    }
+    ::-webkit-scrollbar-thumb {
+        background: ${colors.orange}; 
+        height: 1px;
+    }
 
+    div {
+        min-width: 160px;
+        
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+    padding-right: 24px;
+    }
+    }
+
+    ul {
+        margin-block-start: 0;
+        display: inline;
+        list-style-type: none;
+        padding-inline-start: 0.5em;
+        font-size: 0px;
+    }
+    li {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    p {
+        margin-block-start: 0;
+        margin-block-end: 0;    
+        opacity: 0.6;
+    }
+`
 
 
 const Project = ({ project, meta }) => {
     return (
         <>
             <Helmet
-                title={`${project.data.project_title.text} | Prist, Gatsby & Prismic Starter`}
-                titleTemplate={`% s | ${meta.title} `}
+                title={`${project.data.project_title.text} | Kina's Portfolio`}
+                titleTemplate={`${project.data.project_title.text} | Kina's Portfolio`}
                 meta={[
                     {
                         name: `description`,
@@ -124,9 +195,23 @@ const Project = ({ project, meta }) => {
                 ].concat(meta)}
             />
             <ProjectLayout>
-                <ProjectTitle>
-                    {project.data.project_title.text}
-                </ProjectTitle>
+                <ProjectTitleAndDetailsContainer>
+                    <ProjectTitle>
+                        {project.data.project_title.text}
+                    </ProjectTitle>
+                    <ProjectDetails>
+                        {project.data.project_details_column.map(column =>
+                            <div>
+                                <div dangerouslySetInnerHTML={{
+                                    __html: column.title.html
+                                }} />
+                                <div dangerouslySetInnerHTML={{
+                                    __html: column.list.html
+                                }} />
+                            </div>
+                        )}
+                    </ProjectDetails>
+                </ProjectTitleAndDetailsContainer>
                 {
                     project.data.project_hero_image && (
                         <ProjectHeroContainer>
@@ -182,6 +267,14 @@ export const query = graphql`
                             }
                             project_description {
                                 html
+                            }
+                            project_details_column {
+                                title {
+                                    html
+                                }
+                                list {
+                                    html
+                                }
                             }
                         }
                         uid
