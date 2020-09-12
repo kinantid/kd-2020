@@ -61,12 +61,14 @@ const ProjectBody = styled("div")`
     max-width: 100% !important;
     background: white;
 
-    .block-img {
-        margin-top: 3.5em;
-        margin-bottom: 0.5em;
+    img {
+        width: 100%;
+    }
 
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
         img {
-            width: 100%;
+            margin-left: -${dimensions.paddingHorizontalMobile}em;
+            width: 100vw;
         }
     }
 `
@@ -79,7 +81,7 @@ padding-right: ${dimensions.paddingHorizontalTablet}em;
 margin: 0 auto;
 
 @media(max-width: ${dimensions.minWidthDesktop}px) {
-    max-width: 736px;;
+    max-width: 736px;
 }
 
 
@@ -91,6 +93,10 @@ margin: 0 auto;
 @media(max-width: ${dimensions.maxwidthMobile}px) {
     padding-left: ${dimensions.paddingHorizontalMobile}em;
     padding-right: ${dimensions.paddingHorizontalMobile}em;
+    img {
+        margin-left:-30px;
+        width: ${dimensions.maxwidthMobile}px;
+    }
 }
 padding-top: 20px;
 padding-bottom: 20px;
@@ -226,11 +232,9 @@ const Project = ({ project, meta }) => {
                     )
                 }
                 <ProjectBody>
-                    <ProjectText>
-                        <div dangerouslySetInnerHTML={{
+                <ProjectText dangerouslySetInnerHTML={{
                             __html: project.data.project_description.html
                         }} />
-                    </ProjectText>
                 </ProjectBody>
             </ProjectLayout>
         </>
