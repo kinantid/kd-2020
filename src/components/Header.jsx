@@ -8,6 +8,7 @@ import ContactOverlay from "../components/ContactOverlay";
 import Menu from "../images/Menu.svg";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import Close from "../images/Close.svg";
 
 const HeaderContainer = styled("div")`
     max-width: 100%;
@@ -47,6 +48,36 @@ const HeaderContent = styled("div")`
     align-items: center;
 `;
 
+const MobileHeaderLinks = styled("div")`
+    text-transform: uppercase;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-left: ${dimensions.paddingHorizontalMobile}em;
+    a {
+        background: ${colors.black};
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: ${colors.grey1};
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        &:hover {
+            color: ${colors.onHoverOrange};
+            text-decoration: underline;
+        }
+
+        html:not([data-scroll='0']) {
+            color: ${colors.orange};
+          }
+    }
+    .active {
+        color: ${colors.orange};
+        text-decoration: underline;
+    }
+`
+
 const HeaderLinks = styled("div")`
     text-transform: uppercase;
     height: 100%;
@@ -54,7 +85,7 @@ const HeaderLinks = styled("div")`
         display: flex;
     }
     a {
-        padding-left: 3em;
+        padding-left: ${dimensions.mobilePaddingLeft};
         background: ${colors.black};
         border: none;
         cursor: pointer;
@@ -93,6 +124,8 @@ const HeaderLinks = styled("div")`
 function Header(props) {
     const [open, setOpen] = React.useState(false);
     const [section, setSection] = React.useState('projects');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
     useScrollPosition(({ prevPos, currPos }) => {
         if (props.project) {
             return;
@@ -140,9 +173,37 @@ function Header(props) {
                         >
                             Contact
                     </a>
-                        <img width="40px" height="40px" src={Menu} onClick={() => { }} />
+                        <img width="40px" height="40px" src={isMobileMenuOpen ? Close : Menu} onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen) }} />
                     </HeaderLinks>
                 </HeaderContent>
+                {isMobileMenuOpen ?
+                    <MobileHeaderLinks>
+                        <AnchorLink
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={section === 'projects' ? "active" : null}
+                            to="/#projects">
+                            Projects
+                     </AnchorLink>
+                        <AnchorLink
+                            onClick={() => { setSection('about'); setIsMobileMenuOpen(false) }}
+                            className={section === 'about' ? "active" : null}
+                            to="/#about">
+                            About
+                     </AnchorLink>
+                        <AnchorLink
+                            onClick={() => { setSection('ideas'); setIsMobileMenuOpen(false) }}
+                            className={section === 'ideas' ? "active" : null}
+                            to="/#ideas">
+                            Ideas
+                     </AnchorLink>
+                        <a
+                            onClick={() => { setOpen(true) }}
+                            activeClassName="Link--is-active"
+                        >
+                            Contact
+                </a>
+                    </MobileHeaderLinks> : <></>}
+
             </HeaderContainer>
             {open ?
                 <ContactOverlay setOpen={setOpen} />
