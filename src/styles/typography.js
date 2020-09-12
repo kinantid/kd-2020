@@ -4,8 +4,8 @@ import dimensions from "styles/dimensions";
 
 const typeStyles = css`
     h1 {
-        font-size: 40px;
-        line-height: 1.45;
+        font-size: 64px;
+        line-height: 1.25;
         color: white;
         font-family: Inter;
 

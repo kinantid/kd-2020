@@ -20,7 +20,6 @@ const Hero = styled("div")`
 
     h1 {
         margin-bottom: 1em;
-        font-size: 40px;
 
         a {
             text-decoration: none;

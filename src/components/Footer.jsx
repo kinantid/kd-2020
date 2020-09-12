@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
-import email from "../images/Email Logo.svg";
-import linkedin from "../images/Linkedin Logo.svg";
-import medium from "../images/Medium Logo.svg";
-import twitter from "../images/Twitter Logo.svg";
 import dimensions from "styles/dimensions";
 import { graphql, useStaticQuery } from "gatsby";
+import Email from "../components/_ui/Email";
+import Linkedin from "../components/_ui/LinkedIn";
+import Twitter from "../components/_ui/Twitter";
+import Medium from "../components/_ui/Medium";
 
 const FooterContainer = styled("div")`
     display: flex;
@@ -32,8 +32,8 @@ const FooterContainer = styled("div")`
 const TextContainer = styled("div")`
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     color: ${colors.grey3};
     a {
         text-decoration: underline;
@@ -58,19 +58,20 @@ const TextContainer = styled("div")`
 const SocialLinksContainer = styled("div")`
     display: flex;
     justify-content: space-between;
-    width: 216px;
     margin-top: 1.7em;
+    width: 580px;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         margin-bottom: 3em;
+        width: 264px;
     }
 
 `
 
-const SocialImage = styled("img")`
-&:hover {
-    color: ${colors.onHoverOrange};
-}
+const SocialImage = styled("svg")`
+    fill: ${colors.onHoverOrange};
+
+
 `
 
 export default function Footer() {
@@ -99,20 +100,16 @@ export default function Footer() {
             </TextContainer>
             <SocialLinksContainer>
                 <a href="mailto:kinanti.desy@gmail.com">
-                    <SocialImage width="24px" height="24px" alt="Email logo" src={email}>
-                    </SocialImage>
-                </a>
-                <a href="https://www.linkedin.com/in/kinantid/">
-                    <SocialImage width="24px" height="24px" alt="Linkedin logo" src={linkedin}>
-                    </SocialImage>
+                    <Email />
                 </a>
                 <a href="https://twitter.com/desyanandini">
-                    <SocialImage width="24px" height="24px" alt="Twitter logo" src={twitter}>
-                    </SocialImage>
+                    <Twitter/>
+                </a>
+                <a href="https://www.linkedin.com/in/kinantid/">
+                    <Linkedin />
                 </a>
                 <a href="https://medium.com/@kinantid">
-                    <SocialImage width="24px" height="24px" alt="Medium logo" src={medium}>
-                    </SocialImage>
+                    <Medium/>
                 </a>
             </SocialLinksContainer>
         </FooterContainer >

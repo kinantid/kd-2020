@@ -6,8 +6,8 @@ import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import { graphql, useStaticQuery } from "gatsby";
 import Close from "../images/Close.svg";
-import twitter from "../images/Twitter Logo.svg";
-import linkedin from "../images/Linkedin Logo.svg";
+import Twitter from "../components/_ui/Twitter";
+import Linkedin from "../components/_ui/LinkedIn";
 
 
 const HeaderContainer = styled("div")`
@@ -63,8 +63,6 @@ const Hero = styled("div")`
 
     h1 {
         margin-bottom: 1em;
-        font-size: 40px;
-
         a {
             text-decoration: none;
 
@@ -163,12 +161,11 @@ export default function ContactOverlay({ setOpen }) {
                     </Hero>
                     <SocialLinksContainer>
                         <a href="https://www.linkedin.com/in/kinantid/">
-                            <img width="36px" height="36px" alt="Linkedin logo" src={linkedin}>
-                            </img>
+                            <Linkedin></Linkedin>
                         </a>
                         <a href="https://twitter.com/desyanandini">
-                            <img width="36px" height="36px" alt="Twitter logo" src={twitter}>
-                            </img>
+                            <Twitter></Twitter>
+
                         </a>
                     </SocialLinksContainer>
                 </PageContent>

@@ -40,9 +40,8 @@ margin: 0 auto;
 `
 
 const ProjectTitle = styled("h1")`
-margin-block-start: 0;
+    margin-block-start: 0;
 
-        font-size: 40px;
         line-height: 1.45;
         color: white;
         font-family: Inter;

@@ -33,7 +33,7 @@ padding-right: ${dimensions.paddingHorizontalDesktop}em;
 }
 margin: 0 auto;
 padding-top: 5em;
-margin-bottom: 0;
+margin-bottom: 0.8em;
 `
 
 const Layout = ({ children }) => (
