@@ -33,15 +33,13 @@ const ChildrenContainer = styled.div`
 const ProjectLayout = ({ children }) => (
     <div className="div">
         <Global styles={[globalStyles, typeStyles]} />
-            <Header />
+            <Header project={true}/>
         <ChildrenContainer>
             <main>
                 {children}
             </main>
         </ChildrenContainer>
-        <LayoutContainer>
             <Footer />
-        </LayoutContainer>
     </div>
 )
 
