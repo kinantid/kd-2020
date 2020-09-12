@@ -118,7 +118,6 @@ const ProjectDetails = styled("div")`
     color: white;
     overflow-x: auto;
     overflow-y: hidden;
-    
     ::-webkit-scrollbar {
         height: 4px;
     }
@@ -150,10 +149,11 @@ const ProjectDetails = styled("div")`
         line-height: 24px;
     }
 
-    p {
+    p, strong {
         margin-block-start: 0;
         margin-block-end: 0;    
         opacity: 0.6;
+        font-weight: 600;
     }
 `
 
