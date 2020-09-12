@@ -55,7 +55,7 @@ padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
 
 box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
 border-radius: 0px 0px 4px 4px;
-height: 180px;
+height: 184px;
 
     text-transform: uppercase;
     background: ${colors.black};
