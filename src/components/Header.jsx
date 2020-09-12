@@ -85,7 +85,7 @@ const HeaderLinks = styled("div")`
         display: flex;
     }
     a {
-        padding-left: ${dimensions.mobilePaddingLeft};
+        padding-left: 3em;
         background: ${colors.black};
         border: none;
         cursor: pointer;
