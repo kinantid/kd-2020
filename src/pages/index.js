@@ -41,7 +41,7 @@ const Hero = styled("div")`
     }
 `
 const AboutDiv = styled("div")`
-    padding-top: 3em;
+    padding-top: 2.5em;
     display: flex;
     justify-content: space-between;
     img {
@@ -68,7 +68,7 @@ const AboutDiv = styled("div")`
 `
 
 const AboutSection = styled("div")`
-    padding-top: 3em;
+    padding-top: 6em;
     padding-bottom: 3em;
     @media(max-width:${dimensions.maxwidthMobile}px) {
        margin-bottom: 3em;
@@ -184,7 +184,7 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                 },
             ].concat(meta)}
         />
-        <Hero>
+        <Hero id="projects">
         <div dangerouslySetInnerHTML={{
                 __html: home.hero_title.html
             }} />

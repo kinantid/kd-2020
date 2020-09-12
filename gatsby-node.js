@@ -31,6 +31,14 @@ exports.createPages = async ({ graphql, actions }) => {
                             project_category {
                                 text
                             }
+                            project_details_column {
+                                title {
+                                    html
+                                }
+                                list {
+                                    html
+                                }
+                            }
                             project_post_date
                         }
                         uid

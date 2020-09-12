@@ -6,6 +6,7 @@ import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
 import ContactOverlay from "../components/ContactOverlay";
 import Menu from "../images/Menu.svg";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 const HeaderContainer = styled("div")`
     max-width: 100%;
@@ -69,6 +70,10 @@ const HeaderLinks = styled("div")`
             text-decoration: underline;
         }
 
+        html:not([data-scroll='0']) {
+            color: ${colors.orange};
+          }
+
         &.Link--is-active {
             color: ${colors.orange};
             text-decoration: underline;
@@ -96,21 +101,18 @@ function Header() {
                         <Logo />
                     </Link>
                     <HeaderLinks>
-                        <Link
-                            activeClassName="Link--is-active"
-                            to="/">
+                        <AnchorLink
+                            to="/#projects">
                             Projects
-                         </Link>
-                        <Link
-                            activeClassName="Link--is-active"
+                         </AnchorLink>
+                        <AnchorLink
                             to="/#about">
                             About
-                    </Link>
-                        <Link
-                            activeClassName="Link--is-active"
+                         </AnchorLink>
+                        <AnchorLink
                             to="/#ideas">
                             Ideas
-                    </Link>
+                         </AnchorLink>
                         <a
                             onClick={() => { setOpen(true) }}
                             activeClassName="Link--is-active"
