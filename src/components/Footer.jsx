@@ -12,9 +12,13 @@ const FooterContainer = styled("div")`
     display: flex;
     justify-content: space-between;
     margin-bottom: 3em;
-    padding-left: ${dimensions.paddingHorizontalDesktop}em;
-    padding-right: ${dimensions.paddingHorizontalDesktop}em;
+    padding-left: 140px;
+    padding-right: 140px;
 
+    @media(max-width: ${dimensions.minWidthDesktop}px) {
+        padding-left: 98px;
+        padding-right: 98px;
+    }
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         padding-left: ${dimensions.paddingHorizontalTablet}em;
         padding-right: ${dimensions.paddingHorizontalTablet}em;
@@ -59,18 +63,11 @@ const SocialLinksContainer = styled("div")`
     display: flex;
     justify-content: space-between;
     margin-top: 1.7em;
-    width: 580px;
+    width: 216px;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         margin-bottom: 3em;
-        width: 264px;
     }
-
-`
-
-const SocialImage = styled("svg")`
-    fill: ${colors.onHoverOrange};
-
 
 `
 
