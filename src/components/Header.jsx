@@ -49,13 +49,13 @@ const HeaderContent = styled("div")`
 `;
 
 const MobileHeaderLinks = styled("div")`
-padding-bottom: 2em;
-padding-top: 2em;
-padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
 
-box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
-border-radius: 0px 0px 4px 4px;
-height: 184px;
+    box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
+    border-radius: 0px 0px 4px 4px;
+    height: 184px;
 
     text-transform: uppercase;
     background: ${colors.black};
@@ -139,15 +139,26 @@ function Header(props) {
         if (props.project) {
             return;
         }
-        console.log(currPos.y)
-        if (currPos.y < 0 && currPos.y > -550) {
-            setSection('projects');
-        } else if (currPos.y < -550 && currPos.y > -1238) {
-            setSection('about');
+        if (isMobileMenuOpen) {
+            if (currPos.y < 0 && currPos.y > -550) {
+                setSection('projects');
+            } else if (currPos.y < -550 && currPos.y > -1538) {
+                setSection('about');
+            }
+            else if (currPos.y < -1538 && currPos.y > -3000) {
+                setSection('ideas');
+            }
+        } else {
+            if (currPos.y < 0 && currPos.y > -550) {
+                setSection('projects');
+            } else if (currPos.y < -550 && currPos.y > -1238) {
+                setSection('about');
+            }
+            else if (currPos.y < -1238 && currPos.y > -3000) {
+                setSection('ideas');
+            }
         }
-        else if (currPos.y < -1238 && currPos.y > -3000) {
-            setSection('ideas');
-        }
+
     })
 
     return (
@@ -187,26 +198,29 @@ function Header(props) {
                 </HeaderContent>
                 {isMobileMenuOpen ?
                     <MobileHeaderLinks>
-                        <AnchorLink
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className={section === 'projects' ? "active" : null}
-                            to="/#projects">
-                            Projects
-                     </AnchorLink>
-                        <AnchorLink
-                            onClick={() => { setSection('about'); setIsMobileMenuOpen(false) }}
-                            className={section === 'about' ? "active" : null}
-                            to="/#about">
-                            About
-                     </AnchorLink>
-                        <AnchorLink
-                            onClick={() => { setSection('ideas'); setIsMobileMenuOpen(false) }}
-                            className={section === 'ideas' ? "active" : null}
-                            to="/#ideas">
-                            Ideas
-                     </AnchorLink>
+                        <div onClick={() => { setIsMobileMenuOpen(false) }}>
+                            <AnchorLink
+                                className={section === 'projects' ? "active" : null}
+                                to="/#projects">
+                                Projects
+                            </AnchorLink>
+                        </div>
+                        <div onClick={() => { setIsMobileMenuOpen(false) }}>
+                            <AnchorLink
+                                className={section === 'about' ? "active" : null}
+                                to="/#about">
+                                About
+                            </AnchorLink>
+                        </div>
+                        <div onClick={() => { setIsMobileMenuOpen(false) }}>
+                            <AnchorLink
+                                className={section === 'ideas' ? "active" : null}
+                                to="/#ideas">
+                                Ideas
+                            </AnchorLink>
+                        </div>
                         <a
-                            onClick={() => { setOpen(true) }}
+                            onClick={() => { setOpen(true); setIsMobileMenuOpen(false);  }}
                             activeClassName="Link--is-active"
                         >
                             Contact
