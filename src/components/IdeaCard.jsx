@@ -36,10 +36,11 @@ const IdeaCardContent = styled("div")`
     left: 0;
     top: 0;
     margin-left: 32px;
-    width: 256px;
+    max-width: 493px;
 `
 
-const IdeaCardTitle = styled("h3")`
+const IdeaCardTitle = styled("h2")`
+    margin-top: 32px;
     margin-bottom: 0.5em;
     white-space: pre-wrap;
 

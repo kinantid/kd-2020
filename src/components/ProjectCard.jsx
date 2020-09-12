@@ -43,9 +43,10 @@ const ProjectCardContent = styled("div")`
     width: 256px;
 `
 
-const ProjectCardTitle = styled("h3")`
+const ProjectCardTitle = styled("h2")`
     margin-bottom: 0.5em;
     white-space: pre-wrap;
+    margin-top: 32px;
 
 `
 
