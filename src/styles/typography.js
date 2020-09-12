@@ -1,6 +1,7 @@
 import css from '@emotion/css';
 import './fonts.scss';
 import dimensions from "styles/dimensions";
+import colors from "styles/colors";
 
 const typeStyles = css`
     h1 {
@@ -29,9 +30,19 @@ const typeStyles = css`
 
     h3 {
         font-family: Inter;
-        line-height: 1.2;
+        line-height: 32px;
         font-size: 24px;
-        color: white;
+        font-style: normal;
+        font-weight: normal;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: ${colors.grey1};
+
+        @media(max-width:${dimensions.maxwidthMobile}px) {
+            font-size: 20px;
+            line-height: 28px;
+        }
+
     }
 
     h4 {
@@ -39,7 +50,7 @@ const typeStyles = css`
         margin-bottom: 1.45rem;
         font-weight: 500;
         font-size: 16px;
-        color: white;
+        color: ${colors.grey1};
     }
 
     h6 {
@@ -55,8 +66,12 @@ const typeStyles = css`
     }
 
     a {
+        color: ${colors.orange};
+        text-decoration: none;
         &:hover {
             cursor: pointer;
+            color: ${colors.onHoverOrange};
+
         }
     }
 `
