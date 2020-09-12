@@ -73,10 +73,15 @@ const ProjectBody = styled("div")`
 
 
 const ProjectText = styled("div")`
-max-width: ${dimensions.maxwidthDesktop}px;
-padding-left: ${dimensions.paddingHorizontalDesktop}em;
-padding-right: ${dimensions.paddingHorizontalDesktop}em;
+max-width: 1000px;
+padding-left: ${dimensions.paddingHorizontalTablet}em;
+padding-right: ${dimensions.paddingHorizontalTablet}em;
 margin: 0 auto;
+
+@media(max-width: ${dimensions.minWidthDesktop}px) {
+    max-width: 736px;;
+}
+
 
 @media(max-width: ${dimensions.maxwidthTablet}px) {
     padding-left: ${dimensions.paddingHorizontalTablet}em;
