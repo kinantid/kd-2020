@@ -12,7 +12,6 @@ const ProjectHeroContainer = styled("div")`
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    overflow: hidden;
     position: relative;
     padding-top: 1.5em;
 
@@ -60,17 +59,6 @@ const ProjectBody = styled("div")`
     padding: 0 !important;
     max-width: 100% !important;
     background: white;
-
-    img {
-        width: 100%;
-    }
-
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
-        img {
-            margin-left: -${dimensions.paddingHorizontalMobile}em;
-            width: 100vw;
-        }
-    }
 `
 
 
@@ -79,6 +67,18 @@ max-width: 1000px;
 padding-left: ${dimensions.paddingHorizontalTablet}em;
 padding-right: ${dimensions.paddingHorizontalTablet}em;
 margin: 0 auto;
+overflow-x: hidden;
+
+img {
+    width: 100%;
+}
+
+@media(max-width: ${dimensions.maxwidthMobile}px) {
+    img {
+        margin-left: -${dimensions.paddingHorizontalMobile}em;
+        width: 100vw;
+    }
+}
 
 @media(max-width: ${dimensions.minWidthDesktop}px) {
     max-width: 736px;
@@ -93,10 +93,6 @@ margin: 0 auto;
 @media(max-width: ${dimensions.maxwidthMobile}px) {
     padding-left: ${dimensions.paddingHorizontalMobile}em;
     padding-right: ${dimensions.paddingHorizontalMobile}em;
-    img {
-        margin-left:-30px;
-        width: ${dimensions.maxwidthMobile}px;
-    }
 }
 padding-top: 20px;
 padding-bottom: 20px;
