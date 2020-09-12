@@ -49,13 +49,21 @@ const HeaderContent = styled("div")`
 `;
 
 const MobileHeaderLinks = styled("div")`
+padding-bottom: 2em;
+padding-top: 2em;
+padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
+
+box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
+border-radius: 0px 0px 4px 4px;
+height: 180px;
+
     text-transform: uppercase;
-    height: 300px;
+    background: ${colors.black};
+
     display: flex;
     flex-direction: column;
-    padding-left: ${dimensions.paddingHorizontalMobile}em;
+    justify-content: space-between;
     a {
-        background: ${colors.black};
         border: none;
         cursor: pointer;
         text-transform: uppercase;
@@ -93,6 +101,7 @@ const HeaderLinks = styled("div")`
         color: ${colors.grey1};
         text-decoration: none;
         font-size: 14px;
+        line-height: 17px;
         font-weight: 600;
         @media(max-width: ${dimensions.maxwidthTablet}px) {
             display: none;
