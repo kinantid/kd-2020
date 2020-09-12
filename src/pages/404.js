@@ -1,11 +1,16 @@
 import React from "react";
 import Layout from "components/Layout";
 import styled from "@emotion/styled";
+import dimensions from "../styles/dimensions";
 import { Link } from "gatsby";
 
 const MainContainer = styled.div`
     padding-top: 5em;
     min-height: 70vh;
+
+    @media(max-width:${dimensions.maxwidthMobile}px) {
+        min-height: 0;
+    }
 `
 
 const Container = styled.div`
