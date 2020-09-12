@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
-
+import Chevron from "../images/Chevron.svg"
 const ProjectCardContainer = styled(Link)`
     transition: all 150ms ease-in-out;
     text-decoration: none;
@@ -60,18 +60,22 @@ const ProjectCardBlurb = styled("p")`
     color: ${colors.grey1};
 `
 
-const ProjectCardAction = styled("p")`
+const ProjectCardAction = styled("div")`
     font-weight: 600;
     text-decoration: none;
     color: ${colors.grey1};
     transition: all 150ms ease-in-out;
     visibility: hidden;
     opacity: 0;
+    height: 40px;
+    display: inline;
+    font-size: 14px;
+    line-height: 17px;
 
-    span {
-        margin-left: 0.75em;
-        display: inline-block;
-        color: ${colors.orange};
+
+    img {
+        margin-bottom: -6px;
+        margin-left: 3px;
     }
 `
 
@@ -105,13 +109,13 @@ const ProjectCard = ({ title, description, thumbnail, uid }) => (
             <ProjectCardTitle>
                 {title.text}
             </ProjectCardTitle>
-                    <ProjectCardBlurb>
-                        {description.text}
-                    </ProjectCardBlurb>
-                    <ProjectCardAction className="ProjectCardAction">
+            <ProjectCardBlurb>
+                {description.text}
+            </ProjectCardBlurb>
+            <ProjectCardAction className="ProjectCardAction">
 
-                        VIEW CASE STUDY
-                        <span>{'>'}</span> </ProjectCardAction>
+                VIEW CASE STUDY
+                        <img width="24px" height="24px" src={Chevron}></img> </ProjectCardAction>
         </ProjectCardContent>
     </ProjectCardContainer>
 )
