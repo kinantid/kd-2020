@@ -97,7 +97,7 @@ img {
 padding-top: 20px;
 padding-bottom: 20px;
 
-h1, h2, h3, h4, h5, h6, p, li, a, strong {
+h1, h2, h3, h4, h5, h6, p, li, strong {
     color: black;
     ::selection {
         color: black;
@@ -107,10 +107,15 @@ h1, h2, h3, h4, h5, h6, p, li, a, strong {
         color: black;
         background: ${colors.orange};
       }
+}
 
-    a:hover {
-        color: ${colors.onHoverOrange};
-    }
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: ${colors.onHoverOrange};
 }
 `
 const ProjectDetails = styled("div")`
@@ -228,9 +233,9 @@ const Project = ({ project, meta }) => {
                     )
                 }
                 <ProjectBody>
-                <ProjectText dangerouslySetInnerHTML={{
-                            __html: project.data.project_description.html
-                        }} />
+                    <ProjectText dangerouslySetInnerHTML={{
+                        __html: project.data.project_description.html
+                    }} />
                 </ProjectBody>
             </ProjectLayout>
         </>

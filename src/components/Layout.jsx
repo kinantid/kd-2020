@@ -14,6 +14,7 @@ const LayoutContainer = styled.div`
     .Layout__content {
         padding-bottom: 5em;
     }
+
 `;
 
 const ChildrenContainer = styled.div`

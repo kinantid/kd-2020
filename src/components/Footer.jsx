@@ -40,7 +40,7 @@ const TextContainer = styled("div")`
     line-height: 24px;
     color: ${colors.grey3};
     a {
-        text-decoration: underline;
+        text-decoration: none;
 
         color: ${colors.orange};
 

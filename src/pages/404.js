@@ -6,10 +6,17 @@ import { Link } from "gatsby";
 
 const MainContainer = styled.div`
     padding-top: 5em;
-    min-height: 70vh;
+    min-height: 65vh;
+
+    @media(max-width:${dimensions.maxwidthTablet}px) {
+        min-height: 60vh;
+    }
 
     @media(max-width:${dimensions.maxwidthMobile}px) {
         min-height: 0;
+    }
+    a {
+        text-decoration: underline;
     }
 `
 
