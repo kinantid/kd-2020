@@ -14,7 +14,7 @@ const ProjectHeroContainer = styled("div")`
     align-items: flex-end;
     overflow: hidden;
     position: relative;
-    padding-top: 2.25em;
+    padding-top: 1.5em;
 
     img {
         width: 100%;
@@ -118,6 +118,7 @@ const ProjectDetails = styled("div")`
     color: white;
     overflow-x: auto;
     overflow-y: hidden;
+    min-height: 145px;
     ::-webkit-scrollbar {
         height: 4px;
     }
