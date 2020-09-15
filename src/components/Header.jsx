@@ -15,7 +15,7 @@ const HeaderContainer = styled("div")`
     width: 100%;
     position: fixed;
     top: 0;
-    z-index:1;
+    z-index: 1;
     background: ${colors.black};
     height: 112px;
     @media(max-width: ${dimensions.maxwidthTablet}px) {
@@ -24,16 +24,32 @@ const HeaderContainer = styled("div")`
     img, button {
         padding-top: 0;
     }
+    .mobile-menu-open {
+        visibility: visible;
+        -webkit-transition: -webkit-transform 0.4s ease-in-out visibility 1s ease-in;
+        transition: height 1s ease-in-out;
+        z-index: 0;
+        height: 134px;
+        a {
+            transition: opacity 0.7s 0.5s ease-in;
+            visibility: visible;
+            opacity: 1;
+            padding-bottom: 1em;
+        }
+        }
+
+          
 `
 
 const HeaderContent = styled("div")`
+
     display: flex;
     justify-content: space-between;
     padding-left: ${dimensions.paddingHorizontalDesktop}em;
     padding-right: ${dimensions.paddingHorizontalDesktop}em;
     padding-top: 30px;
     margin: 0 auto;
-
+    z-index: 1000;
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         padding-left: ${dimensions.paddingHorizontalTablet}em;
         padding-right: ${dimensions.paddingHorizontalTablet}em;
@@ -46,53 +62,15 @@ const HeaderContent = styled("div")`
         padding-top: 20px;
     }
     align-items: center;
-`;
-
-const MobileHeaderLinks = styled("div")`
-    padding-bottom: 2em;
-    padding-top: 2em;
-    padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
-
-    box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
-    border-radius: 0px 0px 4px 4px;
-    height: 184px;
-
-    text-transform: uppercase;
-    background: ${colors.black};
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    a {
-        border: none;
-        cursor: pointer;
-        text-transform: uppercase;
-        color: ${colors.grey1};
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
-        &:hover {
-            color: ${colors.onHoverOrange};
-            text-decoration: underline;
-        }
-
-        html:not([data-scroll='0']) {
-            color: ${colors.orange};
-          }
-    }
-    .active {
-        color: ${colors.orange};
-        text-decoration: underline;
-    }
 `
 
 const HeaderLinks = styled("div")`
+
     text-transform: uppercase;
     height: 100%;
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         display: flex;
-    }
-    a {
+    }    a {
         padding-left: 3em;
         background: ${colors.black};
         border: none;
@@ -121,6 +99,44 @@ const HeaderLinks = styled("div")`
         margin-bottom: 10px;
         @media(max-width: ${dimensions.maxwidthTablet}px) {
             display: initial;
+        }
+    }
+    .active {
+        color: ${colors.orange};
+        text-decoration: underline;
+    }
+`
+
+
+const MobileDropdownMenu = styled("div")`
+
+    padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
+    display:flex;
+    visibility: hidden;
+    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 1s 1s;
+    transition: height 1s ease-in-out visibility 1s 1s;
+    text-transform: uppercase;
+    box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
+    border-radius: 0px 0px 4px 4px;
+    height: 0px;
+    background: ${colors.black};
+    z-index: -1;
+    flex-direction: column;
+    justify-content: space-between;
+    a {
+        visibility: hidden;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: ${colors.grey1};
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 600;
+        opacity: 0;
+        &:hover {
+            color: ${colors.onHoverOrange};
+            text-decoration: underline;
         }
     }
     .active {
@@ -196,36 +212,35 @@ function Header(props) {
                         <img width="40px" height="40px" src={isMobileMenuOpen ? Close : Menu} onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen) }} />
                     </HeaderLinks>
                 </HeaderContent>
-                {isMobileMenuOpen ?
-                    <MobileHeaderLinks>
-                        <div onClick={() => { setIsMobileMenuOpen(false) }}>
-                            <AnchorLink
-                                className={section === 'projects' ? "active" : null}
-                                to="/#projects">
-                                Projects
+                <MobileDropdownMenu className={isMobileMenuOpen ? 'mobile-menu-open' : ''}>
+                    <div onClick={() => { setIsMobileMenuOpen(false) }}>
+                        <AnchorLink
+                            className={section === 'projects' ? "active" : null}
+                            to="/#projects">
+                            Projects
                             </AnchorLink>
-                        </div>
-                        <div onClick={() => { setIsMobileMenuOpen(false) }}>
-                            <AnchorLink
-                                className={section === 'about' ? "active" : null}
-                                to="/#about">
-                                About
+                    </div>
+                    <div onClick={() => { setIsMobileMenuOpen(false) }}>
+                        <AnchorLink
+                            className={section === 'about' ? "active" : null}
+                            to="/#about">
+                            About
                             </AnchorLink>
-                        </div>
-                        <div onClick={() => { setIsMobileMenuOpen(false) }}>
-                            <AnchorLink
-                                className={section === 'ideas' ? "active" : null}
-                                to="/#ideas">
-                                Ideas
+                    </div>
+                    <div onClick={() => { setIsMobileMenuOpen(false) }}>
+                        <AnchorLink
+                            className={section === 'ideas' ? "active" : null}
+                            to="/#ideas">
+                            Ideas
                             </AnchorLink>
-                        </div>
-                        <a
-                            onClick={() => { setOpen(true); setIsMobileMenuOpen(false);  }}
-                            activeClassName="Link--is-active"
-                        >
-                            Contact
+                    </div>
+                    <a
+                        onClick={() => { setOpen(true); setIsMobileMenuOpen(false); }}
+                        activeClassName="Link--is-active"
+                    >
+                        Contact
                 </a>
-                    </MobileHeaderLinks> : <></>}
+                </MobileDropdownMenu>
 
             </HeaderContainer>
             {open ?
