@@ -33,6 +33,15 @@ const HeaderContainer = styled("div")`
 
         button {
             visibility: hidden;
+            &:focus {
+                outline: 3px solid ${colors.orange};
+                border-radius: 4px;
+                padding-top: 16px;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-bottom: 20px;
+                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+            }
         }
 
         @media(max-width: ${dimensions.maxwidthTablet}px) {
@@ -198,7 +207,7 @@ function Header(props) {
                             to="/#ideas">
                             Ideas
                          </AnchorLink>
-                        <a
+                        <a href="/"
                             onClick={() => { setOpen(true) }}
                             activeClassName="Link--is-active"
                         >
@@ -233,14 +242,17 @@ function Header(props) {
                             className={section === 'ideas' ? "active" : null}
                             to="/#ideas">
                             Ideas
-                            </AnchorLink>
+                        </AnchorLink>
                     </div>
-                    <a
-                        onClick={() => { setOpen(true); setIsMobileMenuOpen(false); }}
-                        activeClassName="Link--is-active"
-                    >
-                        Contact
+                    <div>
+                        <a
+                            href="/"
+                            onClick={() => { setOpen(true); setIsMobileMenuOpen(false); }}
+                            activeClassName="Link--is-active"
+                        >
+                            Contact
                 </a>
+                    </div>
                 </MobileDropdownMenu>
             </HeaderContainer>
             <ContactOverlay setOpen={setOpen} open={open} />
