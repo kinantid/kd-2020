@@ -11,6 +11,7 @@ import Linkedin from "../components/_ui/LinkedIn";
 
 const MainContainer = styled.div`
 .contact-overlay-open {
+    visibility: visible;
     height: 100%;
     transition: height 0.6s ease-in-out;
 
@@ -20,6 +21,7 @@ const MainContainer = styled.div`
 }
 
 .contact-overlay-closed {
+    visibility: hidden;
     height: 0;
 }
 `
@@ -59,12 +61,13 @@ const LayoutContainer = styled.div`
 `;
 
 const ContactOverlayContainer = styled.div`
-    height: 0;
+    height: 100%;
+    visibility: hidden;
     width: 100%;
     position: fixed;
     z-index: 1;
     left: 0;
-    bottom: 0;
+    top: 0;
     background-color: ${colors.black};
     overflow-x: hidden;
     overflow-y: hidden;
