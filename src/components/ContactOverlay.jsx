@@ -10,6 +10,7 @@ import Twitter from "../components/_ui/Twitter";
 import Linkedin from "../components/_ui/LinkedIn";
 
 const MainContainer = styled.div`
+
 .contact-overlay-open {
     visibility: visible;
     height: 100%;
@@ -18,18 +19,6 @@ const MainContainer = styled.div`
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         transition: height 0s;
     }
-    button {
-        &:focus {
-            outline: 3px solid ${colors.orange};
-            border-radius: 4px;
-            filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
-        }
-    }
-}
-
-.contact-overlay-closed {
-    visibility: hidden;
-    height: 0;
 }
 
 `
@@ -41,6 +30,13 @@ padding-bottom: 3em;
 const HeaderContent = styled("div")`
     display: flex;
     justify-content: space-between;
+    button {
+    &:focus {
+            outline: 3px solid ${colors.orange};
+            border-radius: 4px;
+            filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+    }
+}
 `
 const LayoutContainer = styled.div`
     max-width:  ${dimensions.maxwidthDesktop}px;
@@ -79,8 +75,6 @@ const LayoutContainer2 = styled.div`
 `;
 
 const ContactOverlayContainer = styled.div`
-    height: 100%;
-    visibility: hidden;
     width: 100%;
     position: fixed;
     z-index: 1;
@@ -89,6 +83,9 @@ const ContactOverlayContainer = styled.div`
     background-color: ${colors.black};
     overflow-x: hidden;
     overflow-y: hidden;
+    transition: height 0.6s ease-in-out visibility 0.6s ease-in-out;
+    visibility: hidden;
+    height: 0;
 `
 const Hero = styled("div")`
 
@@ -176,7 +173,7 @@ export default function ContactOverlay({ open, setOpen }) {
                 <LayoutContainer2>
                     <HeaderContainer>
                         <HeaderContent>
-                            <Link to="/" onClick={() => { setOpen(false); open = false; }}>
+                            <Link to="/" onClick={() => { setOpen(false); }}>
                                 <Logo />
                             </Link>
                             <button className={open ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
