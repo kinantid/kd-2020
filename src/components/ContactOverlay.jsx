@@ -127,9 +127,7 @@ const SocialLinksContainer = styled("div")`
     }
 
 `
-const PageContent = styled("div")`
-padding-left: 6em;
-`
+
 export default function ContactOverlay({ open, setOpen }) {
     const data = useStaticQuery(graphql`
     {
@@ -168,28 +166,26 @@ export default function ContactOverlay({ open, setOpen }) {
                             </div>
                         </HeaderContent>
                     </HeaderContainer>
-                    <PageContent>
-                        <Hero>
-                            <div dangerouslySetInnerHTML={{
-                                __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_title.html
-                            }} />
-                            <div dangerouslySetInnerHTML={{
-                                __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_subheading.html
-                            }} />
-                            <div dangerouslySetInnerHTML={{
-                                __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_links.html
-                            }} />
-                        </Hero>
-                        <SocialLinksContainer>
-                            <a href="https://www.linkedin.com/in/kinantid/">
-                                <Linkedin></Linkedin>
-                            </a>
-                            <a href="https://twitter.com/desyanandini">
-                                <Twitter></Twitter>
+                    <Hero>
+                        <div dangerouslySetInnerHTML={{
+                            __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_title.html
+                        }} />
+                        <div dangerouslySetInnerHTML={{
+                            __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_subheading.html
+                        }} />
+                        <div dangerouslySetInnerHTML={{
+                            __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_links.html
+                        }} />
+                    </Hero>
+                    <SocialLinksContainer>
+                        <a href="https://www.linkedin.com/in/kinantid/">
+                            <Linkedin></Linkedin>
+                        </a>
+                        <a href="https://twitter.com/desyanandini">
+                            <Twitter></Twitter>
 
-                            </a>
-                        </SocialLinksContainer>
-                    </PageContent>
+                        </a>
+                    </SocialLinksContainer>
                 </LayoutContainer>
             </ContactOverlayContainer>
         </MainContainer>
