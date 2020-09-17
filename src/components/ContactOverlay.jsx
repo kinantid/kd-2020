@@ -27,7 +27,6 @@ const MainContainer = styled.div`
 `
 
 const HeaderContainer = styled("div")`
-padding-top: 30px;
 padding-bottom: 3em;
 `
 
@@ -37,17 +36,19 @@ const HeaderContent = styled("div")`
 `
 const LayoutContainer = styled.div`
     padding-left: ${dimensions.paddingHorizontalDesktop}em;
-    padding-right: ${dimensions.paddingHorizontalDesktop}em;
+    padding-right: 8em;
+    padding-top: 39px;
     margin: 0 auto;
 
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         padding-left: ${dimensions.paddingHorizontalTablet}em;
         padding-right: ${dimensions.paddingHorizontalTablet}em;
+        padding-top: 28px;
     }
 
     @media(max-width: ${dimensions.maxwidthMobile}px) {
         padding-left: ${dimensions.paddingHorizontalMobile}em;
-        padding-right: ${dimensions.paddingHorizontalMobile}em;
+        padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
     }
 
 

@@ -5,10 +5,8 @@ import colors from "styles/colors";
 import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
 import ContactOverlay from "../components/ContactOverlay";
-import Menu from "../images/Menu.svg";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
-import Close from "../images/Close.svg";
 
 const HeaderContainer = styled("div")`
     max-width: 100%;
@@ -177,7 +175,10 @@ function Header(props) {
         <>
             <HeaderContainer>
                 <HeaderContent>
-                    <Link to="/" onClick={() => setOpen(false)}>
+                    <Link to="/" onClick={() => {
+                        setOpen(false);
+                        setIsMobileMenuOpen(false);
+                    }}>
                         <Logo />
                     </Link>
                     <HeaderLinks>
@@ -205,8 +206,8 @@ function Header(props) {
                         >
                             Contact
                     </a>
-                        <button className= {isMobileMenuOpen ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
-                         type="button" onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen) }} 
+                        <button className={isMobileMenuOpen ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
+                            type="button" onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen) }}
                             aria-label="Menu" aria-controls="navigation">
                             <span className="hamburger-box">
                                 <span className="hamburger-inner"></span>
