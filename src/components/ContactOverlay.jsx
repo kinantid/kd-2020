@@ -25,18 +25,45 @@ const MainContainer = styled.div`
 
 const HeaderContainer = styled("div")`
 padding-bottom: 3em;
+height: 112px;
+max-width: 100%;
+width: 100%;
+z-index: 1;
+background: ${colors.black};
+height: 112px;
+@media(max-width: ${dimensions.maxwidthTablet}px) {
+    height: 80px;
+}
+padding-left: ${dimensions.paddingHorizontalDesktop}em;
+padding-right: 8em;
+padding-top: 39px;
+margin: 0 auto;
+
+@media(max-width: ${dimensions.maxwidthTablet}px) {
+    padding-left: ${dimensions.paddingHorizontalTablet}em;
+    padding-right: ${dimensions.paddingHorizontalTablet}em;
+    padding-top: 30px;
+    height: 80px;
+}
+
+@media(max-width: ${dimensions.maxwidthMobile}px) {
+    padding-left: ${dimensions.paddingHorizontalMobile}em;
+    padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
+}
 `
 
 const HeaderContent = styled("div")`
     display: flex;
     justify-content: space-between;
     button {
-    &:focus {
-            outline: 3px solid ${colors.orange};
-            border-radius: 4px;
-            filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+        padding-top: 8px;
+        padding-right: 8px;
+        &:focus {
+                outline: 3px solid ${colors.orange};
+                border-radius: 4px;
+                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+        }
     }
-}
 `
 const LayoutContainer = styled.div`
     max-width:  ${dimensions.maxwidthDesktop}px;
@@ -50,27 +77,6 @@ const LayoutContainer = styled.div`
     @media(max-width: ${dimensions.maxwidthMobile}px) {
         padding-left: ${dimensions.paddingHorizontalMobile}em;
         padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
-    }
-`;
-
-const LayoutContainer2 = styled.div`
-    padding-left: ${dimensions.paddingHorizontalDesktop}em;
-    padding-right: 8em;
-    padding-top: 39px;
-    margin: 0 auto;
-
-    @media(max-width: ${dimensions.maxwidthTablet}px) {
-        padding-left: ${dimensions.paddingHorizontalTablet}em;
-        padding-right: ${dimensions.paddingHorizontalTablet}em;
-        padding-top: 28px;
-    }
-
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
-        padding-left: ${dimensions.paddingHorizontalMobile}em;
-        padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
-    }
-    .Layout__content {
-        padding-bottom: 5em;
     }
 `;
 
@@ -170,22 +176,20 @@ export default function ContactOverlay({ open, setOpen }) {
     return (
         <MainContainer>
             <ContactOverlayContainer className={open ? "contact-overlay-open" : "contact-overlay-closed"}>
-                <LayoutContainer2>
-                    <HeaderContainer>
-                        <HeaderContent>
-                            <Link to="/" onClick={() => { setOpen(false); }}>
-                                <Logo />
-                            </Link>
-                            <button className={open ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
-                                type="button" onClick={() => { setOpen(false) }}
-                                aria-label="Menu" aria-controls="navigation">
-                                <span className="hamburger-box">
-                                    <span className="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </HeaderContent>
-                    </HeaderContainer>
-                </LayoutContainer2>
+                <HeaderContainer>
+                    <HeaderContent>
+                        <Link to="/" onClick={() => { setOpen(false); }}>
+                            <Logo />
+                        </Link>
+                        <button className={open ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
+                            type="button" onClick={() => { setOpen(false) }}
+                            aria-label="Menu" aria-controls="navigation">
+                            <span className="hamburger-box">
+                                <span className="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </HeaderContent>
+                </HeaderContainer>
                 <LayoutContainer>
                     <Hero>
                         <div dangerouslySetInnerHTML={{
