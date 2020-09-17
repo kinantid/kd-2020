@@ -113,7 +113,7 @@ const MobileDropdownMenu = styled("div")`
     padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
     display:flex;
     visibility: hidden;
-    -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 1s 1s;
+    -webkit-transition: -webkit-height 1s ease-in-out, visibility 1s 1s;
     transition: height 1s ease-in-out visibility 1s 1s;
     text-transform: uppercase;
     box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
@@ -181,7 +181,7 @@ function Header(props) {
         <>
             <HeaderContainer>
                 <HeaderContent>
-                    <Link to="/">
+                    <Link to="/" onClick={()=> setOpen(false)}>
                         <Logo />
                     </Link>
                     <HeaderLinks>
@@ -241,11 +241,8 @@ function Header(props) {
                         Contact
                 </a>
                 </MobileDropdownMenu>
-
             </HeaderContainer>
-            {open ?
-                <ContactOverlay setOpen={setOpen} />
-                : <> </>}
+            <ContactOverlay setOpen={setOpen} open={open} />
         </>
     )
 }

@@ -5,10 +5,24 @@ import { Link } from "gatsby";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import { graphql, useStaticQuery } from "gatsby";
-import Close from "../images/Close.svg";
+import Close from "../components/_ui/Close";
 import Twitter from "../components/_ui/Twitter";
 import Linkedin from "../components/_ui/LinkedIn";
 
+const MainContainer = styled.div`
+.contact-overlay-open {
+    height: 100%;
+    transition: height 0.6s ease-in-out;
+
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        transition: height 0s;
+    }
+}
+
+.contact-overlay-closed {
+    height: 0;
+}
+`
 
 const HeaderContainer = styled("div")`
 padding-top: 30px;
@@ -37,22 +51,23 @@ const LayoutContainer = styled.div`
         padding-right: ${dimensions.paddingHorizontalMobile}em;
     }
 
+
+
     .Layout__content {
         padding-bottom: 5em;
     }
 `;
 
-const ContactOverlayContainer = styled("div")`
-    height: 100%;
+const ContactOverlayContainer = styled.div`
+    height: 0;
     width: 100%;
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 0;
+    bottom: 0;
     background-color: ${colors.black};
     overflow-x: hidden;
     overflow-y: hidden;
-
 `
 const Hero = styled("div")`
     padding-top: 2.5em;
@@ -112,7 +127,7 @@ const SocialLinksContainer = styled("div")`
 const PageContent = styled("div")`
 padding-left: 6em;
 `
-export default function ContactOverlay({ setOpen }) {
+export default function ContactOverlay({ open, setOpen }) {
     const data = useStaticQuery(graphql`
     {
         allPrismicContact {
@@ -137,39 +152,43 @@ export default function ContactOverlay({ setOpen }) {
     }
 `)
     return (
-        <ContactOverlayContainer>
-            <LayoutContainer>
-                <HeaderContainer>
-                    <HeaderContent>
-                        <Link to="/" onClick={() => { setOpen(false) }}>
-                            <Logo />
-                        </Link>
-                        <img width="40px" height="40px" src={Close} onClick={() => { setOpen(false) }} />
-                    </HeaderContent>
-                </HeaderContainer>
-                <PageContent>
-                    <Hero>
-                        <div dangerouslySetInnerHTML={{
-                            __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_title.html
-                        }} />
-                        <div dangerouslySetInnerHTML={{
-                            __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_subheading.html
-                        }} />
-                        <div dangerouslySetInnerHTML={{
-                            __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_links.html
-                        }} />
-                    </Hero>
-                    <SocialLinksContainer>
-                        <a href="https://www.linkedin.com/in/kinantid/">
-                            <Linkedin></Linkedin>
-                        </a>
-                        <a href="https://twitter.com/desyanandini">
-                            <Twitter></Twitter>
+        <MainContainer>
+            <ContactOverlayContainer className={open ? "contact-overlay-open" : "contact-overlay-closed"}>
+                <LayoutContainer>
+                    <HeaderContainer>
+                        <HeaderContent>
+                            <Link to="/" onClick={() => { setOpen(false); open = false; }}>
+                                <Logo />
+                            </Link>
+                            <div onClick={() => { setOpen(false) }}>
+                                <Close />
+                            </div>
+                        </HeaderContent>
+                    </HeaderContainer>
+                    <PageContent>
+                        <Hero>
+                            <div dangerouslySetInnerHTML={{
+                                __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_title.html
+                            }} />
+                            <div dangerouslySetInnerHTML={{
+                                __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_subheading.html
+                            }} />
+                            <div dangerouslySetInnerHTML={{
+                                __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_links.html
+                            }} />
+                        </Hero>
+                        <SocialLinksContainer>
+                            <a href="https://www.linkedin.com/in/kinantid/">
+                                <Linkedin></Linkedin>
+                            </a>
+                            <a href="https://twitter.com/desyanandini">
+                                <Twitter></Twitter>
 
-                        </a>
-                    </SocialLinksContainer>
-                </PageContent>
-            </LayoutContainer>
-        </ContactOverlayContainer>
+                            </a>
+                        </SocialLinksContainer>
+                    </PageContent>
+                </LayoutContainer>
+            </ContactOverlayContainer>
+        </MainContainer>
     )
 }
