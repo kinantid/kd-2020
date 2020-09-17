@@ -18,6 +18,13 @@ const MainContainer = styled.div`
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         transition: height 0s;
     }
+    button {
+        &:focus {
+            outline: 3px solid ${colors.orange};
+            border-radius: 4px;
+            filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+        }
+    }
 }
 
 .contact-overlay-closed {
@@ -95,7 +102,6 @@ const Hero = styled("div")`
         margin-bottom: 1em;
         a {
             text-decoration: none;
-
             color: ${colors.orange};
 
             &:hover {
@@ -173,9 +179,13 @@ export default function ContactOverlay({ open, setOpen }) {
                             <Link to="/" onClick={() => { setOpen(false); open = false; }}>
                                 <Logo />
                             </Link>
-                            <div onClick={() => { setOpen(false) }}>
-                                <Close />
-                            </div>
+                            <button className={open ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
+                                type="button" onClick={() => { setOpen(false) }}
+                                aria-label="Menu" aria-controls="navigation">
+                                <span className="hamburger-box">
+                                    <span className="hamburger-inner"></span>
+                                </span>
+                            </button>
                         </HeaderContent>
                     </HeaderContainer>
                 </LayoutContainer2>

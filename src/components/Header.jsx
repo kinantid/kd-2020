@@ -36,10 +36,6 @@ const HeaderContainer = styled("div")`
             &:focus {
                 outline: 3px solid ${colors.orange};
                 border-radius: 4px;
-                padding-top: 16px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-bottom: 20px;
                 filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
             }
         }
