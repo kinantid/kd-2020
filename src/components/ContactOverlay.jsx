@@ -24,6 +24,7 @@ const MainContainer = styled.div`
     visibility: hidden;
     height: 0;
 }
+
 `
 
 const HeaderContainer = styled("div")`
@@ -35,6 +36,21 @@ const HeaderContent = styled("div")`
     justify-content: space-between;
 `
 const LayoutContainer = styled.div`
+    max-width:  ${dimensions.maxwidthDesktop}px;
+    margin: 0 auto;
+
+    @media(max-width: ${dimensions.maxwidthTablet}px) {
+        padding-left: ${dimensions.paddingHorizontalTablet}em;
+        padding-right: ${dimensions.paddingHorizontalTablet}em;
+    }
+
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+        padding-left: ${dimensions.paddingHorizontalMobile}em;
+        padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
+    }
+`;
+
+const LayoutContainer2 = styled.div`
     padding-left: ${dimensions.paddingHorizontalDesktop}em;
     padding-right: 8em;
     padding-top: 39px;
@@ -50,9 +66,6 @@ const LayoutContainer = styled.div`
         padding-left: ${dimensions.paddingHorizontalMobile}em;
         padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
     }
-
-
-
     .Layout__content {
         padding-bottom: 5em;
     }
@@ -71,6 +84,7 @@ const ContactOverlayContainer = styled.div`
     overflow-y: hidden;
 `
 const Hero = styled("div")`
+
     padding-top: 2.5em;
     padding-bottom: 3em;
     @media(max-width:${dimensions.maxwidthMobile}px) {
@@ -153,7 +167,7 @@ export default function ContactOverlay({ open, setOpen }) {
     return (
         <MainContainer>
             <ContactOverlayContainer className={open ? "contact-overlay-open" : "contact-overlay-closed"}>
-                <LayoutContainer>
+                <LayoutContainer2>
                     <HeaderContainer>
                         <HeaderContent>
                             <Link to="/" onClick={() => { setOpen(false); open = false; }}>
@@ -164,6 +178,8 @@ export default function ContactOverlay({ open, setOpen }) {
                             </div>
                         </HeaderContent>
                     </HeaderContainer>
+                </LayoutContainer2>
+                <LayoutContainer>
                     <Hero>
                         <div dangerouslySetInnerHTML={{
                             __html: data.allPrismicContact.edges.slice(0, 1).pop().node.data.contact_title.html
