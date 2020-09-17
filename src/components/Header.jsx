@@ -18,7 +18,7 @@ const HeaderContainer = styled("div")`
     height: 112px;
     .mobile-menu-open {
         visibility: visible;
-        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        -webkit-transition: height 0.3s ease-in-out;
         transition: height 0.3s ease-in-out;
         z-index: 0;
         height: 134px;
@@ -26,7 +26,7 @@ const HeaderContainer = styled("div")`
             transition: opacity 0.6s 0.3s ease-in;
             visibility: visible;
             opacity: 1;
-            padding-bottom: 1em;
+            padding-bottom: 1.5em;
         }
     }
         }
@@ -106,9 +106,8 @@ const MobileDropdownMenu = styled("div")`
 
     padding-left: ${dimensions.paddingHorizontalMobile + 1}em;
     display:flex;
-    visibility: hidden;
-    -webkit-transition: -webkit-height 1s ease-in-out, visibility 1s 1s;
-    transition: height 1s ease-in-out visibility 1s 1s;
+    -webkit-transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out;
     text-transform: uppercase;
     box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.36);
     border-radius: 0px 0px 4px 4px;
@@ -118,7 +117,6 @@ const MobileDropdownMenu = styled("div")`
     flex-direction: column;
     justify-content: space-between;
     a {
-        visibility: hidden;
         border: none;
         cursor: pointer;
         text-transform: uppercase;

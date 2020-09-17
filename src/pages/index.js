@@ -73,16 +73,6 @@ const AboutSection = styled("div")`
        margin-bottom: 3em;
     }
 
-    h1 {
-        margin: 0;
-        font-size: 48px;
-    }
-    h2 {
-        font-size: 24px;
-        line-height: 29px;
-        font-weight: 600;
-    }
-
     p {
         margin-block-start: 0;
         font-size: 20px;
