@@ -18,12 +18,12 @@ const HeaderContainer = styled("div")`
     height: 112px;
     .mobile-menu-open {
         visibility: visible;
-        -webkit-transition: -webkit-transform 0.4s ease-in-out visibility 1s ease-in;
-        transition: height 1s ease-in-out;
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        transition: height 0.3s ease-in-out;
         z-index: 0;
         height: 134px;
         a {
-            transition: opacity 0.7s 0.5s ease-in;
+            transition: opacity 0.6s 0.3s ease-in;
             visibility: visible;
             opacity: 1;
             padding-bottom: 1em;
