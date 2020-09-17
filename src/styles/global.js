@@ -1,6 +1,7 @@
 import css from "@emotion/css";
 import colors from 'styles/colors';
 import dimensions from 'styles/dimensions';
+import './fonts.scss';
 
 const globalStyles = css`
     html,

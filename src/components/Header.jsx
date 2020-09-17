@@ -18,12 +18,6 @@ const HeaderContainer = styled("div")`
     z-index: 1;
     background: ${colors.black};
     height: 112px;
-    @media(max-width: ${dimensions.maxwidthTablet}px) {
-        height: 80px;
-    }
-    img, button {
-        padding-top: 0;
-    }
     .mobile-menu-open {
         visibility: visible;
         -webkit-transition: -webkit-transform 0.4s ease-in-out visibility 1s ease-in;
@@ -36,9 +30,19 @@ const HeaderContainer = styled("div")`
             opacity: 1;
             padding-bottom: 1em;
         }
+    }
         }
 
-          
+        button {
+            visibility: hidden;
+        }
+
+        @media(max-width: ${dimensions.maxwidthTablet}px) {
+            height: 80px;
+            button {
+                visibility: visible;
+            }
+        }  
 `
 
 const HeaderContent = styled("div")`
@@ -92,14 +96,6 @@ const HeaderLinks = styled("div")`
         html:not([data-scroll='0']) {
             color: ${colors.orange};
           }
-    }
-    img {
-        cursor: pointer;
-        display: none;
-        margin-bottom: 10px;
-        @media(max-width: ${dimensions.maxwidthTablet}px) {
-            display: initial;
-        }
     }
     .active {
         color: ${colors.orange};
@@ -181,7 +177,7 @@ function Header(props) {
         <>
             <HeaderContainer>
                 <HeaderContent>
-                    <Link to="/" onClick={()=> setOpen(false)}>
+                    <Link to="/" onClick={() => setOpen(false)}>
                         <Logo />
                     </Link>
                     <HeaderLinks>
@@ -209,7 +205,13 @@ function Header(props) {
                         >
                             Contact
                     </a>
-                        <img width="40px" height="40px" src={isMobileMenuOpen ? Close : Menu} onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen) }} />
+                        <button className= {isMobileMenuOpen ? "hamburger hamburger--squeeze is-active" : "hamburger hamburger--squeeze"}
+                         type="button" onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen) }} 
+                            aria-label="Menu" aria-controls="navigation">
+                            <span className="hamburger-box">
+                                <span className="hamburger-inner"></span>
+                            </span>
+                        </button>
                     </HeaderLinks>
                 </HeaderContent>
                 <MobileDropdownMenu className={isMobileMenuOpen ? 'mobile-menu-open' : ''}>

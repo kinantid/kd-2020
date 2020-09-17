@@ -29,9 +29,6 @@ const MainContainer = styled.div`
 const HeaderContainer = styled("div")`
 padding-top: 30px;
 padding-bottom: 3em;
-    img, button {
-        padding-top: 0;
-    }
 `
 
 const HeaderContent = styled("div")`
