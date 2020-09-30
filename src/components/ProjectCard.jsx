@@ -102,7 +102,7 @@ const ProjectCardImageContainer = styled("div")`
 `
 
 const ProjectCard = ({ title, description, thumbnail, uid }) => (
-    <ProjectCardContainer to={`/work/${uid}/`}>
+    <ProjectCardContainer to={`/${uid}/`}>
         <ProjectCardImageContainer className="ProjectCardImageContainer">
             <img src={thumbnail.url} alt={title.text} />
         </ProjectCardImageContainer>
