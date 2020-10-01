@@ -14,7 +14,7 @@ const globalStyles = css`
     }
 
     body {
-        .js-focus-visible :focus:not(.focus-visible) {
+        button:focus:not(.focus-visible) {
             outline: none;
           }
 
