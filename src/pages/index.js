@@ -173,12 +173,11 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                 },
             ].concat(meta)}
         />
-        <script src="/node_modules/focus-visible/dist/focus-visible.min.js"></script> 
         <Hero id="projects">
-        <div dangerouslySetInnerHTML={{
+            <div dangerouslySetInnerHTML={{
                 __html: home.hero_title.html
             }} />
-        <div dangerouslySetInnerHTML={{
+            <div dangerouslySetInnerHTML={{
                 __html: home.hero_subtitle.html
             }} />
         </Hero>
@@ -213,7 +212,7 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
 
         </AboutSection>
         <Hero id="ideas">
-        <div dangerouslySetInnerHTML={{
+            <div dangerouslySetInnerHTML={{
                 __html: home.ideas_header.html
             }} />
             <div dangerouslySetInnerHTML={{
@@ -243,9 +242,9 @@ export default ({ data }) => {
     if (!doc || !projects || !ideas) return null;
 
     return (
-        <Layout>
-            <RenderBody home={doc} projects={projects} meta={meta} ideas={ideas} />
-        </Layout>
+            <Layout>
+                <RenderBody home={doc} projects={projects} meta={meta} ideas={ideas} />
+            </Layout>
     )
 }
 

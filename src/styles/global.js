@@ -2,7 +2,6 @@ import css from "@emotion/css";
 import colors from 'styles/colors';
 import dimensions from 'styles/dimensions';
 import './fonts.scss';
-
 const globalStyles = css`
     html,
     body,
@@ -27,11 +26,8 @@ const globalStyles = css`
 
 
         * {
-            box-sizing: border-box;
-            &:focus-active {  
-                outline: 3px solid ${colors.orange};
-                border-radius: 4px;
-                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+            .js-focus-visible :focus:not(.focus-visible) {
+                outline: none;
               }
 
             &::selection {
