@@ -173,6 +173,7 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                 },
             ].concat(meta)}
         />
+        <script src="/node_modules/focus-visible/dist/focus-visible.min.js"></script> 
         <Hero id="projects">
         <div dangerouslySetInnerHTML={{
                 __html: home.hero_title.html
