@@ -38,7 +38,6 @@ margin-bottom: 0.8em;
 `
 
 const Layout = ({ children }) => (
-    <>
     <LayoutContainer className="div">
         <Global styles={[globalStyles, typeStyles]} />
         <div className="Layout">
@@ -51,7 +50,6 @@ const Layout = ({ children }) => (
             <Footer />
         </div>
     </LayoutContainer>
-    </>
 )
 
 Layout.propTypes = {
