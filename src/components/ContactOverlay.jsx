@@ -58,11 +58,6 @@ const HeaderContent = styled("div")`
     button {
         padding-top: 8px;
         padding-right: 8px;
-        &:focus {
-                outline: 3px solid ${colors.orange};
-                border-radius: 4px;
-                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
-        }
     }
 `
 const LayoutContainer = styled.div`
@@ -110,7 +105,7 @@ const Hero = styled("div")`
             &:hover {
                 color: ${colors.onHoverOrange};
             }
-        }
+    }
     }
 
     h2 {

@@ -33,11 +33,6 @@ const HeaderContainer = styled("div")`
 
         button {
             visibility: hidden;
-            &:focus {
-                outline: 3px solid ${colors.orange};
-                border-radius: 4px;
-                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
-            }
         }
 
         @media(max-width: ${dimensions.maxwidthTablet}px) {
@@ -77,7 +72,8 @@ const HeaderLinks = styled("div")`
     height: 100%;
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         display: flex;
-    }    a {
+    }    
+    a {
         padding-left: 3em;
         background: ${colors.black};
         border: none;
@@ -94,6 +90,9 @@ const HeaderLinks = styled("div")`
         &:hover {
             color: ${colors.onHoverOrange};
             text-decoration: underline;
+        }
+        &:active {
+            outline: 0;
         }
 
         html:not([data-scroll='0']) {

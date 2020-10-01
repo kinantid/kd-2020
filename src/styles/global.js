@@ -14,11 +14,6 @@ const globalStyles = css`
     }
 
     body {
-        a:focus {
-            outline: 3px solid ${colors.orange};
-            border-radius: 4px;
-            filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
-        }
         width: 100%;
         margin: 0 auto;
         font-size: 16px;
@@ -33,6 +28,11 @@ const globalStyles = css`
 
         * {
             box-sizing: border-box;
+            &:focus-active {  
+                outline: 3px solid ${colors.orange};
+                border-radius: 4px;
+                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+              }
 
             &::selection {
                 background: ${colors.orange500};
