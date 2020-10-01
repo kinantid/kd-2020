@@ -1,6 +1,7 @@
 import css from "@emotion/css";
 import colors from 'styles/colors';
 import dimensions from 'styles/dimensions';
+import 'focus-visible';
 import './fonts.scss';
 const globalStyles = css`
     html,
@@ -13,7 +14,7 @@ const globalStyles = css`
     }
 
     body {
-        [data-js-focus-visible] :focus:not([data-focus-visible-added]) {
+        .js-focus-visible :focus:not(.focus-visible) {
             outline: none;
           }
 
