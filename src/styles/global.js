@@ -13,6 +13,10 @@ const globalStyles = css`
     }
 
     body {
+        .js-focus-visible :focus:not(.focus-visible) {
+            outline: none;
+          }
+          
         width: 100%;
         margin: 0 auto;
         font-size: 16px;
