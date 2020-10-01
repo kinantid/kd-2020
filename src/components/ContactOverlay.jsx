@@ -5,7 +5,6 @@ import { Link } from "gatsby";
 import dimensions from "styles/dimensions";
 import colors from "styles/colors";
 import { graphql, useStaticQuery } from "gatsby";
-import Close from "../components/_ui/Close";
 import Twitter from "../components/_ui/Twitter";
 import Linkedin from "../components/_ui/LinkedIn";
 
@@ -27,15 +26,11 @@ const HeaderContainer = styled("div")`
 padding-bottom: 3em;
 height: 112px;
 max-width: 100%;
-width: 100%;
 z-index: 1;
 background: ${colors.black};
 height: 112px;
-@media(max-width: ${dimensions.maxwidthTablet}px) {
-    height: 80px;
-}
 padding-left: ${dimensions.paddingHorizontalDesktop}em;
-padding-right: 8em;
+padding-right:  ${dimensions.paddingHorizontalDesktop+4}em;
 padding-top: 39px;
 margin: 0 auto;
 
