@@ -14,9 +14,6 @@ const globalStyles = css`
     }
 
     body {
-        button:focus:not(.focus-visible) {
-            outline: none;
-          }
 
         width: 100%;
         margin: 0 auto;
@@ -31,7 +28,17 @@ const globalStyles = css`
 
 
         * {
+            &:focus {
+                outline: 3px solid ${colors.orange};
+                border-radius: 4px;
+                filter: drop-shadow(0px 4px 12px rgba(255, 97, 29, 0.3));
+            }
+            &:focus:not(.focus-visible) {
+                outline: none;
+                border-radius: 0;
+                filter: none;
 
+              }
             &::selection {
                 background: ${colors.orange500};
                 color: white;
