@@ -1,5 +1,4 @@
 const React = require("react")
-const Layout = require("./src/components/layout")
 // Adds a class name to the body element
 exports.onRenderBody = ({ setPostBodyComponents }, pluginOptions) => {
     setPostBodyComponents([

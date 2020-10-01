@@ -11,6 +11,13 @@ module.exports = {
         offset: -100
       }
     },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: 2018934,
+        sv: 6,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

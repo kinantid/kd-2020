@@ -26,9 +26,6 @@ const globalStyles = css`
 
 
         * {
-            .js-focus-visible :focus:not(.focus-visible) {
-                outline: none;
-              }
 
             &::selection {
                 background: ${colors.orange500};
