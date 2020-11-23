@@ -7,6 +7,7 @@ import colors from "styles/colors"
 import PropTypes from "prop-types"
 import Chevron from "../images/Chevron.svg"
 import { isMobile } from "react-device-detect"
+import { useMediaQuery } from "react-responsive"
 
 const ProjectCardContainer = styled(Link)`
   transition: all 150ms ease-in-out;
@@ -129,31 +130,36 @@ const ProjectCard = ({
   thumbnail,
   mobileThumbnail,
   uid,
-}) => (
-  <ProjectCardContainer to={`/${uid}/`}>
-    {isMobile ? (
-      <ProjectMobileCardImageContainer>
-        <img src={mobileThumbnail.url} alt={title.text} />
-      </ProjectMobileCardImageContainer>
-    ) : (
-      <ProjectCardImageContainer className="ProjectCardImageContainer">
-        <img src={thumbnail.url} alt={title.text} />
-      </ProjectCardImageContainer>
-    )}
-    <ProjectCardContent className="ProjectCardContent">
-      <ProjectCardTitle>{title.text}</ProjectCardTitle>
-      <ProjectCardBlurb>{description.text}</ProjectCardBlurb>
+}) => {
+  const isMobile = useMediaQuery({
+    query: `(max-width: 600px)`
+  })
+  return (
+    <ProjectCardContainer to={`/${uid}/`}>
       {isMobile ? (
-        <></>
+        <ProjectMobileCardImageContainer>
+          <img src={mobileThumbnail.url} alt={title.text} />
+        </ProjectMobileCardImageContainer>
       ) : (
-        <ProjectCardAction className="ProjectCardAction">
-          VIEW CASE STUDY
-          <img width="24px" height="24px" src={Chevron}></img>{" "}
-        </ProjectCardAction>
+        <ProjectCardImageContainer className="ProjectCardImageContainer">
+          <img src={thumbnail.url} alt={title.text} />
+        </ProjectCardImageContainer>
       )}
-    </ProjectCardContent>
-  </ProjectCardContainer>
-)
+      <ProjectCardContent className="ProjectCardContent">
+        <ProjectCardTitle>{title.text}</ProjectCardTitle>
+        <ProjectCardBlurb>{description.text}</ProjectCardBlurb>
+        {isMobile ? (
+          <></>
+        ) : (
+          <ProjectCardAction className="ProjectCardAction">
+            VIEW CASE STUDY
+            <img width="24px" height="24px" src={Chevron}></img>{" "}
+          </ProjectCardAction>
+        )}
+      </ProjectCardContent>
+    </ProjectCardContainer>
+  )
+}
 
 export default ProjectCard
 
