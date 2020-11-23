@@ -22,6 +22,8 @@ const HeaderContainer = styled("div")`
         transition: height 0.3s ease-in-out;
         z-index: 0;
         height: 134px;
+        padding-bottom: 2em;
+
         a {
             transition: opacity 0.6s 0.3s ease-in;
             visibility: visible;
