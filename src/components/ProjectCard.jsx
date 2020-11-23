@@ -44,7 +44,7 @@ const ProjectCardContent = styled("div")`
   width: 256px;
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     width: 188px;
-}
+  }
 `
 
 const ProjectCardTitle = styled("h2")`
@@ -123,7 +123,13 @@ const ProjectMobileCardImageContainer = styled("div")`
   }
 `
 
-const ProjectCard = ({ title, description, thumbnail, mobileThumbnail, uid }) => (
+const ProjectCard = ({
+  title,
+  description,
+  thumbnail,
+  mobileThumbnail,
+  uid,
+}) => (
   <ProjectCardContainer to={`/${uid}/`}>
     {isMobile ? (
       <ProjectMobileCardImageContainer>
@@ -137,10 +143,14 @@ const ProjectCard = ({ title, description, thumbnail, mobileThumbnail, uid }) =>
     <ProjectCardContent className="ProjectCardContent">
       <ProjectCardTitle>{title.text}</ProjectCardTitle>
       <ProjectCardBlurb>{description.text}</ProjectCardBlurb>
-      <ProjectCardAction className="ProjectCardAction">
-        VIEW CASE STUDY
-        <img width="24px" height="24px" src={Chevron}></img>{" "}
-      </ProjectCardAction>
+      {isMobile ? (
+        <></>
+      ) : (
+        <ProjectCardAction className="ProjectCardAction">
+          VIEW CASE STUDY
+          <img width="24px" height="24px" src={Chevron}></img>{" "}
+        </ProjectCardAction>
+      )}
     </ProjectCardContent>
   </ProjectCardContainer>
 )
