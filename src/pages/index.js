@@ -133,11 +133,12 @@ const Section = styled("div")`
       
 `
 
-const RenderBody = ({ home, projects, meta, ideas }) => (
+const RenderBody = ({ home, projects, meta, imageUrl, ideas }) => (
     <>
         <Helmet
             title={`Kina`}
             titleTemplate={`%s | ${meta.title}`}
+            
             meta={[
                 {
                     name: `description`,
@@ -171,7 +172,34 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                     name: `twitter:description`,
                     content: meta.description,
                 },
-            ].concat(meta)}
+            ].concat(
+                imageUrl
+                  ? [
+                      {
+                        property: "og:image",
+                        content: imageUrl,
+                      },
+                      {
+                        property: "og:image:width",
+                        content: "1200px",
+                      },
+                      {
+                        property: "og:image:height",
+                        content: "630px",
+                      },
+                      {
+                        name: "twitter:card",
+                        content: "summary_large_image",
+                      },
+                    ]
+                  : [
+                      {
+                        name: "twitter:card",
+                        content: "summary",
+                      },
+                    ]
+              )
+              .concat(meta)}
         />
         <Hero id="projects">
             <div dangerouslySetInnerHTML={{
@@ -239,12 +267,12 @@ export default ({ data }) => {
     const projects = data.allPrismicProject.edges;
     const ideas = data.allPrismicIdeas.edges;
     const meta = data.site.siteMetadata;
-
+    const imageUrl = data.allPrismicHomepage.edges.slice(0, 1).pop().node.data.social_sharing_image.url;
     if (!doc || !projects || !ideas) return null;
 
     return (
             <Layout>
-                <RenderBody home={doc} projects={projects} meta={meta} ideas={ideas} />
+                <RenderBody home={doc} projects={projects} meta={meta} imageUrl={imageUrl} ideas={ideas} />
             </Layout>
     )
 }
@@ -290,6 +318,9 @@ export const query = graphql`
                                 html
                             }
                             profile_photo {
+                                url
+                            }
+                            social_sharing_image {
                                 url
                             }
                         }

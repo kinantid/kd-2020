@@ -1,92 +1,103 @@
 {
-    "Main" : {
-      "uid" : {
-        "type" : "UID",
-        "config" : {
-          "label" : "homepage"
-        }
-      },
-      "hero_title" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "heading1, hyperlink",
-          "allowTargetBlank" : true,
-          "label" : "hero title",
-          "placeholder" : "Hello world"
-        }
-      },
-      "hero_subtitle" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "heading2, hyperlink",
-          "allowTargetBlank" : true,
-          "label" : "hero subtitle",
-          "placeholder" : "Blah blah"
-        }
-      },
-      "content" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-          "allowTargetBlank" : true,
-          "label" : "content"
-        }
-      },
-      "about_header" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-          "label" : "About header",
-          "placeholder" : "About title"
-        }
-      },
-      "about_main_text" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-          "label" : "About Main Text",
-          "placeholder" : "All about me..."
-        }
-      },
-      "about_links_header" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-          "label" : "About Links Header",
-          "placeholder" : "About Links Below"
-        }
-      },
-      "about_links_section" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-          "label" : "About links section",
-          "placeholder" : "I've done all this cool stuff!"
-        }
-      },
-      "ideas_header" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-          "label" : "Ideas Header",
-          "placeholder" : "Huatau"
-        }
-      },
-      "ideas_subheading" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-          "label" : "Ideas Subheading",
-          "placeholder" : "Thoughts etc."
-        }
-      },
-      "profile_photo" : {
-        "type" : "Image",
-        "config" : {
-          "constraint" : { },
-          "thumbnails" : [ ],
-          "label" : "profile_photo"
-        }
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "homepage"
+      }
+    },
+    "hero_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "heading1, hyperlink",
+        "allowTargetBlank" : true,
+        "label" : "hero title",
+        "placeholder" : "Hello world"
+      }
+    },
+    "social_sharing_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : {
+          "width" : 1200,
+          "height" : 630
+        },
+        "thumbnails" : [ ],
+        "label" : "social_sharing_image"
+      }
+    },
+    "hero_subtitle" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "heading2, hyperlink",
+        "allowTargetBlank" : true,
+        "label" : "hero subtitle",
+        "placeholder" : "Blah blah"
+      }
+    },
+    "content" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "allowTargetBlank" : true,
+        "label" : "content"
+      }
+    },
+    "about_header" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "About header",
+        "placeholder" : "About title"
+      }
+    },
+    "about_main_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "About Main Text",
+        "placeholder" : "All about me..."
+      }
+    },
+    "about_links_header" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "About Links Header",
+        "placeholder" : "About Links Below"
+      }
+    },
+    "about_links_section" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "About links section",
+        "placeholder" : "I've done all this cool stuff!"
+      }
+    },
+    "ideas_header" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "Ideas Header",
+        "placeholder" : "Huatau"
+      }
+    },
+    "ideas_subheading" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "Ideas Subheading",
+        "placeholder" : "Thoughts etc."
+      }
+    },
+    "profile_photo" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "profile_photo"
       }
     }
   }
+}
