@@ -189,6 +189,7 @@ const RenderBody = ({ home, projects, meta, ideas }) => (
                     title={project.node.data.project_title}
                     description={project.node.data.project_preview_description}
                     thumbnail={project.node.data.project_preview_thumbnail}
+                    mobileThumbnail = {project.node.data.project_preview_thumbnail_mobile}
                     uid={project.node.uid}
                 />
             ))}
@@ -306,6 +307,9 @@ export const query = graphql`
                                 text
                             }
                             project_preview_thumbnail {
+                                url
+                            }
+                            project_preview_thumbnail_mobile {
                                 url
                             }
                             project_category {
