@@ -41,10 +41,9 @@ margin: 0 auto;
 const ProjectTitle = styled("h1")`
     margin-block-start: 0;
 
-        line-height: 1.45;
         color: white;
         font-family: Inter;
-
+        margin-bottom: 0.2em;
         @media(max-width:${dimensions.maxwidthTablet}px) {
             font-size: 2.25em;
         }

@@ -19,7 +19,7 @@ const Hero = styled("div")`
     }
 
     h1 {
-        margin-bottom: 1em;
+        margin-bottom: 0.2em;
 
         a {
             text-decoration: none;
