@@ -131,12 +131,12 @@ const ProjectCard = ({
   mobileThumbnail,
   uid,
 }) => {
-  const isMobile = useMediaQuery({
+  const isMobileQuery = useMediaQuery({
     query: `(max-width: 600px)`
   })
   return (
     <ProjectCardContainer to={`/${uid}/`}>
-      {isMobile ? (
+      {isMobile || isMobileQuery ? (
         <ProjectMobileCardImageContainer>
           <img src={mobileThumbnail.url} alt={title.text} />
         </ProjectMobileCardImageContainer>
@@ -148,7 +148,7 @@ const ProjectCard = ({
       <ProjectCardContent className="ProjectCardContent">
         <ProjectCardTitle>{title.text}</ProjectCardTitle>
         <ProjectCardBlurb>{description.text}</ProjectCardBlurb>
-        {isMobile ? (
+        {isMobile || isMobileQuery? (
           <></>
         ) : (
           <ProjectCardAction className="ProjectCardAction">
