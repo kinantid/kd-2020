@@ -45,6 +45,7 @@ const AboutDiv = styled("div")`
     justify-content: space-between;
     img {
         margin-left: 3em;
+        border-radius: 4px;
     }
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
@@ -62,6 +63,8 @@ const AboutDiv = styled("div")`
         
      img {
         margin-left: 0;
+        margin-bottom: 2em;
+
         }
      }
 `
@@ -71,6 +74,10 @@ const AboutSection = styled("div")`
     padding-bottom: 3em;
     @media(max-width:${dimensions.maxwidthMobile}px) {
        margin-bottom: 3em;
+    }
+
+    h1 {
+        margin-bottom: 0.2em;
     }
 
     p {
