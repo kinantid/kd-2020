@@ -22,37 +22,49 @@ const MainContainer = styled.div`
 `
 
 const HeaderContainer = styled("div")`
-  padding-bottom: 3em;
   height: 112px;
   max-width: 100%;
+  width: 100%;
+  top: 0;
   z-index: 1;
   background: ${colors.black};
   height: 112px;
-  padding-left: ${dimensions.paddingHorizontalDesktop}em;
-  padding-right: ${dimensions.paddingHorizontalDesktop + 4}em;
-  padding-top: 39px;
-  margin: 0 auto;
+
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
-    padding-left: ${dimensions.paddingHorizontalTablet}em;
-    padding-right: ${dimensions.paddingHorizontalTablet}em;
-    padding-top: 30px;
     height: 80px;
   }
 
-  @media (max-width: ${dimensions.maxwidthMobile}px) {
-    padding-left: ${dimensions.paddingHorizontalMobile}em;
-    padding-right: ${dimensions.paddingHorizontalMobile + 0.8}em;
-  }
 `
 
 const HeaderContent = styled("div")`
   display: flex;
+  margin: 0 auto;
+  height: inherit;
   justify-content: space-between;
-  button {
-    padding-top: 8px;
-    padding-right: 8px;
+  align-items: center;
+  padding-left: ${dimensions.paddingHorizontalDesktop}em;
+  padding-right: ${dimensions.paddingHorizontalDesktop}em;
+
+
+  @media(min-width: ${dimensions.maxwidthTablet}px) {
+    a, button {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
   }
+
+  @media(max-width: ${dimensions.maxwidthTablet}px) {
+      padding-left: ${dimensions.paddingHorizontalTablet}em;
+      padding-right: ${dimensions.paddingHorizontalTablet}em;
+
+  }
+
+  @media(max-width: ${dimensions.maxwidthMobile}px) {
+      padding-left: ${dimensions.paddingHorizontalMobile}em;
+      padding-right: ${dimensions.paddingHorizontalMobile}em;
+  }
+
 `
 const LayoutContainer = styled.div`
   max-width: ${dimensions.maxwidthDesktop}px;

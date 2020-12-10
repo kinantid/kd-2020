@@ -34,13 +34,13 @@ const HeaderContainer = styled("div")`
         }
 
         button {
-            visibility: hidden;
+            display: none;
         }
 
         @media(max-width: ${dimensions.maxwidthTablet}px) {
             height: 80px;
             button {
-                visibility: visible;
+                display: inline;
             }
         }  
 `
@@ -48,35 +48,45 @@ const HeaderContainer = styled("div")`
 const HeaderContent = styled("div")`
 
     display: flex;
+    height: inherit;
     justify-content: space-between;
     padding-left: ${dimensions.paddingHorizontalDesktop}em;
     padding-right: ${dimensions.paddingHorizontalDesktop}em;
-    padding-top: 30px;
     margin: 0 auto;
     z-index: 1000;
+    align-items: center;
+
+    @media(min-width: ${dimensions.maxwidthTablet}px) {
+        a {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        
+    }
+
     @media(max-width: ${dimensions.maxwidthTablet}px) {
         padding-left: ${dimensions.paddingHorizontalTablet}em;
         padding-right: ${dimensions.paddingHorizontalTablet}em;
-        padding-top: 20px;
+
     }
 
     @media(max-width: ${dimensions.maxwidthMobile}px) {
         padding-left: ${dimensions.paddingHorizontalMobile}em;
         padding-right: ${dimensions.paddingHorizontalMobile}em;
-        padding-top: 20px;
     }
-    align-items: center;
 `
 
 const HeaderLinks = styled("div")`
-
+    display: flex;
+    align-items: center;
     text-transform: uppercase;
-    height: 100%;
-    @media(max-width: ${dimensions.maxwidthTablet}px) {
-        display: flex;
-    }    
+    justify-content: space-between;
+
+    @media(min-width: ${dimensions.maxwidthTablet}px) {
+        width: 396px;
+    }
+
     a {
-        padding-left: 3em;
         background: ${colors.black};
         border: none;
         cursor: pointer;
